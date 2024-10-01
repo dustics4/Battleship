@@ -6,6 +6,10 @@ class Gameboard {
     }
 
     placeShip(ship, coordinates){
+        this.ships.push(ship);
+        coordinates.forEach(([x,y]) => {
+            this.board[x][y] = ship;
+        });
     }
 
     receiveAttack(x,y){
