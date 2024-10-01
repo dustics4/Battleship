@@ -21,4 +21,19 @@ describe('Gameboard Class', () => {
         expect(gameboard.board[0][1]).toBe(mockShip);
         expect(gameboard.board[0][2]).toBe(mockShip);
     })
+
+    test('Placement shouldnt allow to touch another ship ', () => {
+        const gameboard = new Gameboard;
+        const mockShip1 = {length : 3 , hit: jest.fn()};
+        const mockShip2 = {length : 4 , hit: jest.fn()};
+
+        const coordinates1 = [[0, 0], [0, 1], [0, 2]];
+        const coordinates2 = [[0, 0], [0, 1], [0, 2], [0,3]];
+
+        gameboard.placeShip(mockShip1, coordinates1);
+
+        expect(() => {
+            gameboard.placeShip(mockShip2, coordinates2);
+        }).toThrow('Invalid Placement : ship overlaps with another ship');
+    })
 })
