@@ -6,7 +6,6 @@ class Gameboard {
     }
 
     placeShip(ship, coordinates){
-
     }
 
     receiveAttack(x,y){
