@@ -21,9 +21,11 @@ describe("Ship class" , ()=> {
         expect(ship.hits).toBe(1);
     })
 
-    test('Should show if ship is sunk', () => {
+    test('Should show if ship is standing and has been hit', () => {
         let ship = new Ship(4);
 
+        ship.hit();
+        expect(ship.isSunk()).toBe(false);
     })
 
     test('Should show true if ship is sunk' , () => {
