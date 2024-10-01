@@ -18,6 +18,8 @@ class Gameboard {
     }
 
     allShipsSunk(){
-        
+
     }
 }
+
+export default Gameboard;
