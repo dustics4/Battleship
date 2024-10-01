@@ -11,7 +11,7 @@ class Ship {
     }
 
     isSunk(){ //function caclulates if the ship has been sunk , based on the length and number of times it has been hit
-
+        return this.length === this.hits;
     }
 
 }
