@@ -76,6 +76,18 @@ describe('Gameboard Class', () => {
     })
 
     test("No ships are sunk" , () => {
+        const gameboard = new Gameboard;
+        const ship = new Ship(3);
+        const ship2 = new Ship(2);
+        const coordinates = [[0, 0], [0, 1], [0, 2]];
+        const coordinates2= [[0, 5], [0, 6]];
 
+
+        gameboard.placeShip(ship, coordinates);
+        gameboard.placeShip(ship2, coordinates2);
+        gameboard.receiveAttack(0,0);
+        gameboard.receiveAttack(0,1);
+
+        expect(gameboard.allShipsSunk()).toBe(false);
     })
 })
