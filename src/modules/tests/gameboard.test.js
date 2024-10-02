@@ -36,4 +36,16 @@ describe('Gameboard Class', () => {
             gameboard.placeShip(mockShip2, coordinates2);
         }).toThrow('Invalid Placement : ship overlaps with another ship');
     })
+
+    test('Attack received returns true' , ()=> {
+        //how to test when attack is received
+        const gameboard = new Gameboard;
+        const mockShip1 = {length: 4 , hit: jest.fn()};
+        const coordinates = [[0, 0], [0, 1], [0, 2]];
+
+
+        gameboard.placeShip(mockShip1 , coordinates);
+        gameboard.receiveAttack(0,0);
+
+    })
 })
