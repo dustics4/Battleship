@@ -45,7 +45,7 @@ class Gameboard {
     }
 
     allShipsSunk(){
-        
+        return this.ships.forEach((ship) => ship.isSunk());
     }
 }
 
