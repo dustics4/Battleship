@@ -45,7 +45,9 @@ describe('Gameboard Class', () => {
 
 
         gameboard.placeShip(mockShip1 , coordinates);
-        gameboard.receiveAttack(0,0);
+        const result = gameboard.receiveAttack(0,1);
+
+        expect(result).toBe(true);
 
     })
 })
