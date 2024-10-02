@@ -1,4 +1,5 @@
 import Gameboard from "../gameboard";
+import Ship from "../ship";
 
 describe('Gameboard Class', () => {
     let gameboard;
@@ -63,13 +64,18 @@ describe('Gameboard Class', () => {
 
     test("All ships sunk to be true" , () => {
         const gameboard = new Gameboard;
-        const mockShip1 = {length: 4 , hit: jest.fn()};
+        const ship = new Ship(3);
         const coordinates = [[0, 0], [0, 1], [0, 2]];
 
+        gameboard.placeShip(ship, coordinates);
         gameboard.receiveAttack(0,0);
         gameboard.receiveAttack(0,1);
         gameboard.receiveAttack(0,2);
 
         expect(gameboard.allShipsSunk()).toBe(true);
+    })
+
+    test("No ships are sunk" , () => {
+
     })
 })

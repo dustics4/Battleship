@@ -41,11 +41,11 @@ class Gameboard {
     }
 
     renderBoard(){
-
+        
     }
 
     allShipsSunk(){
-        return this.ships.every((ship) => ship.isSunk());
+        return this.ships.every(ship => ship.isSunk());
     }
 }
 
