@@ -30,7 +30,7 @@ class Gameboard {
         //else
         //add the xy coordinates into the missed ships
         //return false
-        let target = this.board[[x][y]];
+        let target = this.board[x][y];
         if(target){
             target.hit();
             return true;
