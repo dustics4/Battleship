@@ -48,6 +48,16 @@ describe('Gameboard Class', () => {
         const result = gameboard.receiveAttack(0,1);
 
         expect(result).toBe(true);
+    })
 
+    test("Attach missed to be true" , () => {
+        const gameboard = new Gameboard;
+        const mockShip1 = {length: 4 , hit: jest.fn()};
+        const coordinates = [[0, 0], [0, 1], [0, 2]];
+
+        gameboard.placeShip(mockShip1, coordinates);
+        const result = gameboard.receiveAttack(0,3);
+
+        expect(result).toBe(false);
     })
 })
