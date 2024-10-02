@@ -41,11 +41,11 @@ class Gameboard {
     }
 
     renderBoard(){
-        
+
     }
 
     allShipsSunk(){
-
+        
     }
 }
 

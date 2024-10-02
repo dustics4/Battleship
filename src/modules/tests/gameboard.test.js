@@ -50,7 +50,7 @@ describe('Gameboard Class', () => {
         expect(result).toBe(true);
     })
 
-    test("Attach missed to be true" , () => {
+    test("Attack missed to be true" , () => {
         const gameboard = new Gameboard;
         const mockShip1 = {length: 4 , hit: jest.fn()};
         const coordinates = [[0, 0], [0, 1], [0, 2]];
@@ -59,5 +59,17 @@ describe('Gameboard Class', () => {
         const result = gameboard.receiveAttack(0,3);
 
         expect(result).toBe(false);
+    })
+
+    test("All ships sunk to be true" , () => {
+        const gameboard = new Gameboard;
+        const mockShip1 = {length: 4 , hit: jest.fn()};
+        const coordinates = [[0, 0], [0, 1], [0, 2]];
+
+        gameboard.receiveAttack(0,0);
+        gameboard.receiveAttack(0,1);
+        gameboard.receiveAttack(0,2);
+
+        expect(gameboard.allShipsSunk()).toBe(true);
     })
 })
