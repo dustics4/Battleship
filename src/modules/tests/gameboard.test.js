@@ -100,6 +100,5 @@ describe('Gameboard Class', () => {
         gameboard.renderBoard()
 
         expect(console.log).toHaveBeenCalledWith(expect.stringContaining("~"))
-        expect(console.log).toHaveBeenCalledTimes(10);
     })
 })

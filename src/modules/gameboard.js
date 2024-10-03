@@ -41,7 +41,14 @@ class Gameboard {
     }
 
     renderBoard(){
-        
+
+        for(let i = 0; i < this.board.length; i++){
+            for(let j = 0; j < this.board.length; j++){
+                console.log("~");
+                console.log(i);
+                console.log(j);
+            }
+        }
     }
 
     allShipsSunk(){
