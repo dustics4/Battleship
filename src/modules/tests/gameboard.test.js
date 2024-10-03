@@ -6,6 +6,11 @@ describe('Gameboard Class', () => {
 
     beforeEach(() => {
         gameboard = new Gameboard;
+        jest.spyOn(console, 'log').mockImplementation(() => {});
+    })
+
+    afterEach(() => {
+        
     })
 
     test('should place a ship on the board' , () => {
