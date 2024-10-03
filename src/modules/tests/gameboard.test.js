@@ -96,7 +96,10 @@ describe('Gameboard Class', () => {
         expect(gameboard.allShipsSunk()).toBe(false);
     })
 
-    test("should render an empty board on console", () => {
+    test("should render an empty board on console as '~' ", () => {
         gameboard.renderBoard()
+
+        expect(console.log).toHaveBeenCalledWith(expect.stringContaining("~"))
+        expect(console.log).toHaveBeenCalledTimes(10);
     })
 })
