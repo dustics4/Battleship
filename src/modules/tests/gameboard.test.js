@@ -95,4 +95,8 @@ describe('Gameboard Class', () => {
 
         expect(gameboard.allShipsSunk()).toBe(false);
     })
+
+    test("should render an empty board on console", () => {
+        gameboard.renderBoard()
+    })
 })
