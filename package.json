@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Test Driven Development (TDD)  and creating a battleship game.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "build": "webpack",

@@ -1,5 +1,3 @@
-const { ModuleFilenameHelpers } = require("webpack");
-
 class Ship {
     constructor(length){
         this.length = length;
