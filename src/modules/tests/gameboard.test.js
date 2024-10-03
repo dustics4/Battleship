@@ -10,7 +10,7 @@ describe('Gameboard Class', () => {
     })
 
     afterEach(() => {
-        
+        console.log.mockRestore();
     })
 
     test('should place a ship on the board' , () => {
