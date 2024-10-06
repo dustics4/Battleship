@@ -7,7 +7,8 @@ class Player {
     }
 
     attackEnemy(enemyBoard , coordinates){ //human
-        
+        const [x, y] = coordinates; 
+        enemyBoard.receiveAttack(x,y);
     }
 
     randomAttack(enemyBoard){ //computerAtack
