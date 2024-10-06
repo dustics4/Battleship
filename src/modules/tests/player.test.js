@@ -6,7 +6,7 @@ jest.mock("../gameboard.js");
 
 
 describe("Player class test ", () => {
-    let player , gameboard;
+    let player , enemyBoard;
     beforeEach(() => {
         player = new Player(false);
         enemyBoard = new Gameboard;
@@ -19,16 +19,15 @@ describe("Player class test ", () => {
     })
 
     describe("Attack Enemy", () => {
-        
+        test("Should call receive attack on the enemy board with correct coordinates ", () =>{
+            const coordinates = [2,3];
+
+            player.attackEnemy(enemyBoard, coordinates );
+            expect(enemyBoard.receiveAttack).toHaveBeenCalledWith(coordinates);
+        })
     })
 
     describe("Random Attack ", () => {
         
-    })
-})
-
-describe("Random Attack ", () => {
-    beforeEach(() => {
-
     })
 })
