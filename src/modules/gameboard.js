@@ -49,16 +49,13 @@ class Gameboard {
             let str = "";
             for(let j = 0; j < this.board.length; j++){
                 if(this.board[i][j] === null){
-                    //console.log("~");
                     str += "~" + "|";
-                    
                 }else if(this.board[i][j] instanceof Ship){
-                    //console.log("S");
                     str += "S" + "|";
+                }else if(this.board[i][j] === "hit"){
+                    str += "X" + "|";
                 }
-                /*if(this.board[i][j] instanceof Ship){
-                    this.board[i][j] = "S";
-                }*/
+                
             }
             console.log(str);
         }
@@ -76,6 +73,7 @@ const coordinates2 = [[9, 0], [9, 1], [9, 2], [9,3]];
 const gameboard = new Gameboard;
 gameboard.placeShip(ship, coordinates);
 gameboard.placeShip(ship2, coordinates2);
+gameboard.receiveAttack(0,0);
 gameboard.renderBoard();
 
 
