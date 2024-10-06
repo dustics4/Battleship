@@ -33,8 +33,10 @@ class Gameboard {
         let target = this.board[x][y];
         if(target){
             target.hit();
+            this.board[x][y] = "hit";
             return true;
         }else {
+            this.board[x][y] = "miss";
             this.missedAttacks.push([x, y]);
             return false;
         }
@@ -43,10 +45,13 @@ class Gameboard {
     renderBoard(){
 
         for(let i = 0; i < this.board.length; i++){
+            //console.log("");
             for(let j = 0; j < this.board.length; j++){
-                console.log("~");
-                console.log(i);
-                console.log(j);
+                console.log("~"); //row
+                /*if(this.board[i][j] instanceof Ship){
+                    this.board[i][j] = "S";
+                }*/
+                console.log("\n")
             }
         }
     }
@@ -55,5 +60,12 @@ class Gameboard {
         return this.ships.every(ship => ship.isSunk());
     }
 }
+const ship = new Ship(3);
+const mockShip = ship;
+const coordinates = [[0, 0], [0, 1], [0, 2]];
+const gameboard = new Gameboard;
+gameboard.placeShip(ship, coordinates);
+gameboard.renderBoard();
+
 
 export default Gameboard;
