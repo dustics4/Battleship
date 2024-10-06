@@ -46,18 +46,21 @@ class Gameboard {
 
         for(let i = 0; i < this.board.length; i++){
             //console.log("");
+            let str = "";
             for(let j = 0; j < this.board.length; j++){
                 if(this.board[i][j] === null){
-                    console.log("~");
+                    //console.log("~");
+                    str += "~" + "|";
                     
                 }else if(this.board[i][j] instanceof Ship){
-                    console.log("S");
+                    //console.log("S");
+                    str += "S" + "|";
                 }
                 /*if(this.board[i][j] instanceof Ship){
                     this.board[i][j] = "S";
                 }*/
             }
-            console.log("\n");
+            console.log(str);
         }
     }
 
@@ -66,10 +69,13 @@ class Gameboard {
     }
 }
 const ship = new Ship(3);
-const mockShip = ship;
+const ship2 = new Ship(4);
 const coordinates = [[0, 0], [0, 1], [0, 2]];
+const coordinates2 = [[9, 0], [9, 1], [9, 2], [9,3]];
+
 const gameboard = new Gameboard;
 gameboard.placeShip(ship, coordinates);
+gameboard.placeShip(ship2, coordinates2);
 gameboard.renderBoard();
 
 
