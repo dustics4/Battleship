@@ -2,14 +2,12 @@ import Player from "../player.js";
 import Gameboard from "../gameboard.js";
 import { afterEach, jest } from "@jest/globals";
 
-jest.mock("../gameboard.js");
-
 
 describe("Player class test ", () => {
     let player , enemyBoard;
     beforeEach(() => {
         player = new Player(false);
-        enemyBoard = new Gameboard;
+        enemyBoard = new Gameboard();
 
         jest.spyOn(enemyBoard, "receiveAttack");
     })
@@ -26,6 +24,10 @@ describe("Player class test ", () => {
 
             player.attackEnemy(enemyBoard, coordinates);
             expect(enemyBoard.receiveAttack).toHaveBeenCalledWith(x,y);
+            
+            expect(() => {
+                player.attackEnemy(enemyBoard, coordinates);
+            }).toThrow("Invalid Attack: Already attacked");
         })
     })
 
