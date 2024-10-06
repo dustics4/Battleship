@@ -21,8 +21,8 @@ class isComputer extends Player{
     }
 
     randomAttack(enemyBoard){
-        
+
     }
 }
 
-//subclass create for computer player
+export default Player;
