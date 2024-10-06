@@ -110,4 +110,15 @@ describe('Gameboard Class', () => {
 
         expect(console.log).toHaveBeenCalledWith(expect.stringContaining("S"))
     })
+
+
+    test("Should show 'X' in console when ship is placed on board ", () => {
+        const ship = new Ship(3);
+        const coordinates = [[0, 0], [0, 1], [0, 2]];
+        gameboard.placeShip(ship, coordinates);
+        gameboard.receiveAttack(0,0);
+        gameboard.renderBoard()
+
+        expect(console.log).toHaveBeenCalledWith(expect.stringContaining("X"))
+    })
 })
