@@ -112,7 +112,7 @@ describe('Gameboard Class', () => {
     })
 
 
-    test("Should show 'X' in console when ship is placed on board ", () => {
+    test("Should show 'X' in console when ship is hit on board ", () => {
         const ship = new Ship(3);
         const coordinates = [[0, 0], [0, 1], [0, 2]];
         gameboard.placeShip(ship, coordinates);
@@ -120,5 +120,15 @@ describe('Gameboard Class', () => {
         gameboard.renderBoard()
 
         expect(console.log).toHaveBeenCalledWith(expect.stringContaining("X"))
+    })
+
+    test("Should show 'O' in console when ship is missed on board ", () => {
+        const ship = new Ship(3);
+        const coordinates = [[0, 0], [0, 1], [0, 2]];
+        gameboard.placeShip(ship, coordinates);
+        gameboard.receiveAttack(0,3);
+        gameboard.renderBoard()
+
+        expect(console.log).toHaveBeenCalledWith(expect.stringContaining("O"))
     })
 })
