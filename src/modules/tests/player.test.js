@@ -19,15 +19,11 @@ describe("Player class test ", () => {
     })
 
     describe("Attack Enemy", () => {
-        beforeEach(() => {
-    
-        })
+        
     })
 
     describe("Random Attack ", () => {
-        beforeEach(() => {
-    
-        })
+        
     })
 })
 
