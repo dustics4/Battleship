@@ -76,6 +76,9 @@ gameboard.placeShip(ship, coordinates);
 gameboard.placeShip(ship2, coordinates2);
 gameboard.receiveAttack(0,0);
 gameboard.receiveAttack(0,3);
+gameboard.receiveAttack(6,3);
+
 gameboard.renderBoard()
+console.log(gameboard.missedAttacks);
 
 export default Gameboard;
