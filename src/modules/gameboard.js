@@ -78,5 +78,4 @@ gameboard.receiveAttack(0,0);
 gameboard.receiveAttack(0,3);
 gameboard.renderBoard()
 
-
 export default Gameboard;
