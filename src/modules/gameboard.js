@@ -47,17 +47,17 @@ class Gameboard {
         for(let i = 0; i < this.board.length; i++){
             //console.log("");
             for(let j = 0; j < this.board.length; j++){
-                //console.log("~"); //row
                 if(this.board[i][j] === null){
                     console.log("~");
+                    
                 }else if(this.board[i][j] instanceof Ship){
                     console.log("S");
                 }
                 /*if(this.board[i][j] instanceof Ship){
                     this.board[i][j] = "S";
                 }*/
-                console.log("\n")
             }
+            console.log("\n");
         }
     }
 
