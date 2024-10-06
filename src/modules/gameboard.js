@@ -24,12 +24,15 @@ class Gameboard {
     }
 
     receiveAttack(x,y){
-        //create target variable
-        //if target
-        //run hit function from ship
-        //else
-        //add the xy coordinates into the missed ships
-        //return false
+        for(let [x,y] of coordinates){
+            if(x < 0 || x >= 10 || y < 0 || y >= 10){
+                throw new Error ('Invalid Placement: Attack is out of bounds');
+            }
+            if(this.board[x][y] === 'hit' || this.board[x][y] === 'miss'){
+                throw new Error ('Invalid Attack: Already attacked');
+            }
+        }
+
         let target = this.board[x][y];
         if(target){
             target.hit();

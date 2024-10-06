@@ -16,7 +16,7 @@ class Player {
 
             if(error.message.includes("Invalid Placement: Attack is out of bounds")){
                 console.log("Invalid attack: Please choose coordinates within the game board.");
-            }else if (error.message.includes("Invalid Placement: Already attacked")) {
+            }else if (error.message.includes("Invalid Attack: Already attacked")) {
                 console.log("Invalid attack: You've already attacked this position.");
             } else {
                 console.log("An unexpected error occurred. Please try again.");
