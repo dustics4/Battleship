@@ -7,7 +7,7 @@ class Player {
     }
 
     attackEnemy(enemyBoard , coordinates){ //human
-
+        
     }
 
     randomAttack(enemyBoard){ //computerAtack
