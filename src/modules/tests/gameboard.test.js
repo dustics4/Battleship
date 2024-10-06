@@ -103,8 +103,11 @@ describe('Gameboard Class', () => {
     })
 
     test("Should show 'S' in console when ship is placed on board ", () => {
+        const ship = new Ship(3);
+        const coordinates = [[0, 0], [0, 1], [0, 2]];
+        gameboard.placeShip(ship, coordinates);
         gameboard.renderBoard()
 
-        expect(console.log).toHaveBeenCalledWith(expect.stringContaining("~"))
+        expect(console.log).toHaveBeenCalledWith(expect.stringContaining("S"))
     })
 })
