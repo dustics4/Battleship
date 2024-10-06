@@ -45,7 +45,6 @@ class Gameboard {
     renderBoard(){
 
         for(let i = 0; i < this.board.length; i++){
-            //console.log("");
             let str = "";
             for(let j = 0; j < this.board.length; j++){
                 if(this.board[i][j] === null){
@@ -54,6 +53,8 @@ class Gameboard {
                     str += "S" + "|";
                 }else if(this.board[i][j] === "hit"){
                     str += "X" + "|";
+                }else{
+                    str += "O" + "|";
                 }
                 
             }
@@ -74,7 +75,8 @@ const gameboard = new Gameboard;
 gameboard.placeShip(ship, coordinates);
 gameboard.placeShip(ship2, coordinates2);
 gameboard.receiveAttack(0,0);
-gameboard.renderBoard();
+gameboard.receiveAttack(0,3);
+gameboard.renderBoard()
 
 
 export default Gameboard;
