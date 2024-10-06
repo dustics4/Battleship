@@ -2,7 +2,7 @@ import Player from "../player.js";
 import Gameboard from "../gameboard.js";
 import { afterEach, jest } from "@jest/globals";
 
-jest.mock("./gameboard.js");
+jest.mock("../gameboard.js");
 
 
 describe("Player class test ", () => {
