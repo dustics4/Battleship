@@ -101,4 +101,10 @@ describe('Gameboard Class', () => {
 
         expect(console.log).toHaveBeenCalledWith(expect.stringContaining("~"))
     })
+
+    test("Should show 'S' in console when ship is placed on board ", () => {
+        gameboard.renderBoard()
+
+        expect(console.log).toHaveBeenCalledWith(expect.stringContaining("~"))
+    })
 })
