@@ -19,7 +19,15 @@ class Player {
 
     randomAttack(enemyBoard){ //computerAtack
         //math.random for attack on x,y
-        const [x,y] = Math.floor(Math.random() * 10);
+        try{
+            const x = Math.floor(Math.random() * 10);
+            const y = Math.floor(Math.random() * 10);
+
+            enemyBoard.receiveAttack(x,y)
+        }catch(error){
+            console.log("Error during attack : ", error.message);
+            throw error;
+        }
     }
 }
 
