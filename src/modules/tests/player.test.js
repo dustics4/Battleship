@@ -38,8 +38,8 @@ describe("Player class test ", () => {
             jest.spyOn(Math, "random").mockReturnValueOnce(0.2).mockReturnValueOnce(0.8);
 
             player.randomAttack(enemyBoard);
-            expect(enemyBoard.receiveAtack).toHaveBeenCalledWith(2,8);
-            expect(enemyBoard.receiveAtack).toHaveBeenCalledTimes(1);
+            expect(enemyBoard.receiveAttack).toHaveBeenCalledWith(2,8);
+            expect(enemyBoard.receiveAttack).toHaveBeenCalledTimes(1);
         });
 
         
