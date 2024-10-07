@@ -37,7 +37,7 @@ class isComputer extends Player{
     }
 
     randomAttack(enemyBoard){
-
+        
     }
 }
 
