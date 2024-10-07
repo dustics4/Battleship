@@ -35,9 +35,11 @@ describe("Player class test ", () => {
     describe("Random Attack ", () => {
 
         test("Should call receive Attack with coordiantes between 0 and 9" , () => {
-            let [x,y] = Math.floor(Math.random())
+            jest.spyOn(Math, "random").mockImplementationOnce(0.2).mockReturnValue(0.8);
+
             player.randomAttack(enemyBoard);
-            expect(enemyBoard.receiveAttack).toHaveBeenCalledWith(x,y);
+            expect(enemyBoard.receiveAtack).toHaveBeenCalledWith(2,8);
+            expect(enemyBoard.rceiveAttack).toHaveBeenCalledTimes(1);
         });
 
         
