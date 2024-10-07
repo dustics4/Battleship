@@ -19,6 +19,7 @@ class Player {
 
     randomAttack(enemyBoard){ //computerAtack
         //math.random for attack on x,y
+        const [x,y] = Math.floor(Math.random() * 10);
     }
 }
 
