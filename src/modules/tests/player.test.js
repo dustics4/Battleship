@@ -1,6 +1,6 @@
 import Player from "../player.js";
 import Gameboard from "../gameboard.js";
-import { afterEach, jest } from "@jest/globals";
+import { afterEach, describe, expect, jest, test } from "@jest/globals";
 
 
 describe("Player class test ", () => {
@@ -14,6 +14,7 @@ describe("Player class test ", () => {
 
     afterEach(() => {
         jest.restoreAllMocks();
+        jest.resetAllMocks();
     })
 
     describe("Attack Enemy", () => {
@@ -32,6 +33,13 @@ describe("Player class test ", () => {
     })
 
     describe("Random Attack ", () => {
+
+        test("Should call receive Attack with coordiantes between 0 and 9" , () => {
+            let [x,y] = Math.floor(Math.random())
+            player.randomAttack(enemyBoard);
+            expect(enemyBoard.receiveAttack).toHaveBeenCalledWith(x,y);
+        });
+
         
     })
 })
