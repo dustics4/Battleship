@@ -1,4 +1,5 @@
 module.exports = {
+  testEnvironment: "jest-environment-jsdom",
     modulePaths: ['/shared/vendor/modules'],
     moduleFileExtensions: ['js', 'jsx'],
     moduleDirectories: ['node_modules', 'bower_components', 'shared'],
