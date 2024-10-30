@@ -7,6 +7,9 @@ describe("Interface Test " , () => {
         <div id = "player-board">
         <div class = "gameboard"> </div>
         </div>
-        `
+        `;
+        
+        console.log(Interface);   
+        Interface.createBoardElement('player');    
     })
 })  

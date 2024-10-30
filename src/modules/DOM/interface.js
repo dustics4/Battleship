@@ -14,6 +14,6 @@ const Interface = (() => {
     }
 
     return {createBoardElement, renderBoard, addBoardClickListener};
-})
+});
 
 export default Interface;
