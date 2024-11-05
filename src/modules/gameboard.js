@@ -80,6 +80,8 @@ gameboard.receiveAttack(0,3);
 gameboard.receiveAttack(6,3);
 
 gameboard.renderBoard()
-console.log("Missed Attacks : ");
+gameboard.missedAttacks.forEach(([x,y]) => {
+    console.log(`- Missed coordinates: (${x}, ${y})`);
+});
 
 export default Gameboard;
