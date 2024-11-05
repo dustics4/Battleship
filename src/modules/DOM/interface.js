@@ -7,6 +7,8 @@ const Interface = (() => {
         let boardContainer = document.querySelector(`#${playerType}-board`);
         console.log(boardContainer);
 
+        boardContainer.innerHTML = '';
+
         //user for loop i <10 - double for loop
         //what is a cell variable
         //add a class to the cell
