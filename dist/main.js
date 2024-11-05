@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_DOM_interface_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/DOM/interface.js */ \"./src/modules/DOM/interface.js\");\n\n\n_modules_DOM_interface_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createBoardElement(\"player\");\n\n//# sourceURL=webpack://battleship/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_DOM_interface_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/DOM/interface.js */ \"./src/modules/DOM/interface.js\");\n\n\n_modules_DOM_interface_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createBoardElement(\"player\");\n_modules_DOM_interface_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createBoardElement(\"computer\");\n\n//# sourceURL=webpack://battleship/./src/index.js?");
 
 /***/ }),
 
