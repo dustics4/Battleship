@@ -80,6 +80,6 @@ gameboard.receiveAttack(0,3);
 gameboard.receiveAttack(6,3);
 
 gameboard.renderBoard()
-console.log(gameboard.missedAttacks);
+console.log("Missed Attacks : ");
 
 export default Gameboard;
