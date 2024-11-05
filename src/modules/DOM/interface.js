@@ -1,6 +1,7 @@
 import Gameboard from "../gameboard.js"
 
 const Interface = (() => {
+    console.log("test");
     function createBoardElement(playerType){
         
     }
