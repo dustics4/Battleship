@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_DOM_interface_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/DOM/interface.js */ \"./src/modules/DOM/interface.js\");\n\n\n\n//# sourceURL=webpack://battleship/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_DOM_interface_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/DOM/interface.js */ \"./src/modules/DOM/interface.js\");\n\n\n_modules_DOM_interface_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createBoardElement(\"player\");\n\n//# sourceURL=webpack://battleship/./src/index.js?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
   \**************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _gameboard_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../gameboard.js */ \"./src/modules/gameboard.js\");\n\n\nconst Interface = (() => {\n    console.log(\"test\");\n    function createBoardElement(playerType){\n        \n    }\n\n    function renderBoard(board, playerType){\n\n    }\n\n    function addBoardClickListener(board){ //When a cell is clicked, it should send the coordinates to main.js for processing (i.e., sending them to the receiveAttack() method).\n\n    }\n\n    return {createBoardElement, renderBoard, addBoardClickListener};\n})();\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Interface);\n\n//# sourceURL=webpack://battleship/./src/modules/DOM/interface.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _gameboard_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../gameboard.js */ \"./src/modules/gameboard.js\");\n\n\nconst Interface = (() => {\n    console.log(\"test\");\n    function createBoardElement(playerType){\n        //boardContainer variable / use playertype within this\n        let boardContainer = document.querySelector(`#${playerType}-board`);\n        console.log(boardContainer);\n\n        //user for loop i <10 - double for loop\n        //what is a cell variable\n        //add a class to the cell\n        // what is cell.dataset\n    }\n\n    function renderBoard(board, playerType){\n\n    }\n\n    function addBoardClickListener(board){ //When a cell is clicked, it should send the coordinates to main.js for processing (i.e., sending them to the receiveAttack() method).\n\n    }\n\n    return {createBoardElement, renderBoard, addBoardClickListener};\n})();\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Interface);\n\n//# sourceURL=webpack://battleship/./src/modules/DOM/interface.js?");
 
 /***/ }),
 
