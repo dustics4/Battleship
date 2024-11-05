@@ -1,4 +1,4 @@
-import { describe } from "@jest/globals";
+import { describe, expect } from "@jest/globals";
 import Interface from "./interface.js";
 
 describe("Interface Test " , () => {
@@ -10,6 +10,9 @@ describe("Interface Test " , () => {
         `;
         
         console.log(Interface);   
-        Interface.createBoardElement('player');    
+        Interface.createBoardElement('player');   
+        
+        const cells = document.querySelectorAll('.cell');
+        expect(cells.length).toBe(100);
     })
 })  
