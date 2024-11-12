@@ -7,19 +7,15 @@ const Interface = (() => {
         let boardContainer = document.querySelector(`#${playerType}-board`);
         console.log(boardContainer);
 
-        for(let i = 0; i < 10; i++){
-            for(let j = 0; j < 10; j++){
-                const cell = document.createElement('div');
-                cell.classList.add('cell');
-                cell.dataset.x = i;
-                cell.dataset.y = j;
-                boardContainer.appendChild(cell);
+        for(let i = 0; i < 10; i++){ //first loop to iterate over x coordinates
+            for(let j = 0; j < 10; j++){ //second loop to iterate over y coordinates
+                const cell = document.createElement('div'); //creating a div
+                cell.classList.add('cell'); //adding class cell to the div
+                cell.dataset.x = i; //indexing x
+                cell.dataset.y = j; //indexing y
+                boardContainer.appendChild(cell); //appending to the container
             }
         }
-        //user for loop i <10 - double for loop
-        //what is a cell variable
-        //add a class to the cell
-        // what is cell.dataset
     }
 
     function renderBoard(board, playerType){
