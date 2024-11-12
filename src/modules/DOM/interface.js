@@ -20,7 +20,8 @@ const Interface = (() => {
     }
 
     function renderBoard(board, playerType){
-
+        //for tomorrow, don't need if statements
+        // think about rendering board only.
         if(playerType === "player"){ // checks to see if playertype is player
             playerType = new Player;
             playerType = false;
@@ -30,14 +31,6 @@ const Interface = (() => {
             playerType = new Player;
             playerType = true;
         }
-        /*if(playerType(false)){
-            playerType = "player";
-            playerType.board = board;
-        }else{
-            playerType = "computer"
-        }
-        console.log(playerType);
-        console.log(Player);*/
     }
 
     function addBoardClickListener(board){ //When a cell is clicked, it should send the coordinates to main.js for processing (i.e., sending them to the receiveAttack() method).
