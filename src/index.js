@@ -7,4 +7,4 @@ Interface.createBoardElement("computer");
 const playerGameboard = new Gameboard;
 const computerGameboard = new Gameboard;
 Interface.renderBoard(playerGameboard, "player");
-console.log(Interface.renderBoard(playerGameboard, "player"));
+console.log(playerGameboard);

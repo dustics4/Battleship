@@ -20,7 +20,14 @@ const Interface = (() => {
     }
 
     function renderBoard(board, playerType){
-
+        if(Player(false)){
+            playerType = "player";
+            Player.board = board;
+        }else{
+            playerType = "computer"
+        }
+        console.log(playerType);
+        console.log(Player);
     }
 
     function addBoardClickListener(board){ //When a cell is clicked, it should send the coordinates to main.js for processing (i.e., sending them to the receiveAttack() method).
