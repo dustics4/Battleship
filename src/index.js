@@ -4,4 +4,7 @@ import Gameboard from "./modules/gameboard.js";
 
 Interface.createBoardElement("player");
 Interface.createBoardElement("computer");
-Interface.renderBoard()
+const playerGameboard = new Gameboard;
+const computerGameboard = new Gameboard;
+Interface.renderBoard(playerGameboard, "player");
+console.log(Interface.renderBoard(playerGameboard, "player"));
