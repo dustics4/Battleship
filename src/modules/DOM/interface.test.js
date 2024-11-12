@@ -1,5 +1,6 @@
 import { describe, expect } from "@jest/globals";
 import Interface from "./interface.js";
+import Gameboard from "../gameboard.js";
 
 describe("Interface Test " , () => {
     test("Should create 10x10 board ", () => {
