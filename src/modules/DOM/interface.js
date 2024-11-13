@@ -22,14 +22,19 @@ const Interface = (() => {
     function renderBoard(board, playerType){
         //for tomorrow, don't need if statements
         // think about rendering board only.
-        
-        const activeboard = Gameboard.board;
-
-        if(activeboard){
-            const boardElements = activeboard.map(cell => createBoardElement(cell.playerType));
-            console.log(boardElements);
+        const cell = document.querySelectorAll(".cell");
+        let newBoard = board.board;
+        for(let i = 0; i < cell.length; i++){
+            console.log(cell[i]);
+            if(newBoard[x][y] === "hit"){
+                const hit = document.createElement("div");
+                hit.classList.add("hit");
+                hit.innerHTML = "hit";
+                cell.appendChild(hit);
+            }
         }
-        
+         //loop through whole gameboard. Apply i,j in for loop to x,y of the datasets. 
+         // Then prcoeed wit the logic.
     }
 
     function addBoardClickListener(board){ //When a cell is clicked, it should send the coordinates to main.js for processing (i.e., sending them to the receiveAttack() method).

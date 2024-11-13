@@ -4,7 +4,8 @@ import Gameboard from "./modules/gameboard.js";
 
 Interface.createBoardElement("player");
 Interface.createBoardElement("computer");
-const playerGameboard = new Gameboard;
-const computerGameboard = new Gameboard;
-Interface.renderBoard(playerGameboard, "player");
-console.log(playerGameboard);
+const player = new Player(false);
+const computer = new Player(true);
+Interface.renderBoard(player, player);
+
+player.attackEnemy(computer.gameboard, [0,0])
