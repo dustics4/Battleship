@@ -22,12 +22,12 @@ const Interface = (() => {
     function renderBoard(gameboard, playerType){
         let cell = document.querySelectorAll(".cell");
         let newBoard = gameboard.board;
-        console.log(newBoard);
+        //console.log(newBoard);
 
-        for(let i = 0; i < newBoard.lenght; i++){
+        for(let i = 0; i < newBoard.length; i++){
             for(let j = 0; j < newBoard.length; j++){
+                console.log(newBoard[i][j]);
                 cell.forEach(([x, y]) => {
-                    console.log(x + " " + y + " " + i + " " + " " + j);
                 })
             }
         }
