@@ -23,22 +23,28 @@ const Interface = (() => {
         let newBoard = gameboard.board;
         console.log(newBoard);
 
-        cell.forEach(([x,y]) =>{
-            console.log(x);
-            console.log(y);
-        })
+        
 
         //let cellDataSetX = parseInt(cell.dataset.x, 10);
         //let cellDataSetY = parseInt(cell.dataset.y, 10);
         for(let i = 0; i < newBoard.length; i++){
             for(let j = 0; j < newBoard.length; j++){
-                newBoard[i][j] = [cellDataSetX,cellDataSetY];
+                //newBoard[i][j] = [cellDataSetX,cellDataSetY];
+                cell.forEach((cell) =>{
+                    let datasetX = cell.dataset.x;
+                    let datasetY = cell.dataset.y;
+                    if(datasetX === newBoard[i] && datasetY === newBoard[j]){
+                        console.log("lol");
+                    }
+                })
                 console.log([i][j]);
                 if(newBoard[i][j] === "miss"){
                     cell.innerHTML = "miss";
                 }
             }
         }
+
+        
     }
 
     function addBoardClickListener(board){ //When a cell is clicked, it should send the coordinates to main.js for processing (i.e., sending them to the receiveAttack() method).
