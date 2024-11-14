@@ -2,7 +2,6 @@ import Gameboard from "../gameboard.js"
 import Player from "../player.js";
 
 const Interface = (() => {
-    console.log("test");
     function createBoardElement(playerType){
         //boardContainer variable / use playertype within this
         let boardContainer = document.querySelector(`#${playerType}-board`);
@@ -22,17 +21,21 @@ const Interface = (() => {
     function renderBoard(gameboard, playerType){
         let cell = document.querySelectorAll(".cell");
         let newBoard = gameboard.board;
-        //console.log(newBoard);
+        console.log(newBoard);
 
         for(let i = 0; i < newBoard.length; i++){
             for(let j = 0; j < newBoard.length; j++){
+                console.log(newBoard[0]);
                 cell.forEach((cell) => {
                     //console.log(cell.dataset.x);
                     let cellDataSetX = parseInt(cell.dataset.x);
                     let cellDataSetY = parseInt(cell.dataset.y);
-                    
-                    if(newBoard[i][j]){
-                        console.log("hey");
+                    //console.log(newBoard[0][0]);
+                    //console.log(newBoard[i][j]);
+                    //console.log(newBoard[i] +  "=" + cellDataSetX);
+                    if(newBoard[0][0] === "miss"){
+                        //console.log("hi");
+                        return true;
                     }
                 })
             }

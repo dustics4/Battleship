@@ -8,4 +8,6 @@ const player = new Player(false);
 const computer = new Player(true);
 Interface.renderBoard(player.gameboard, player);
 
-player.attackEnemy(computer.gameboard, [0,0])
+computer.attackEnemy(player.gameboard, [0,0])
+console.log(player.gameboard);
+player.gameboard.renderBoard();
