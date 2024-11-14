@@ -19,18 +19,23 @@ const Interface = (() => {
     }
 
     function renderBoard(gameboard, playerType){
-        let cell = document.querySelector(".cell");
+        let cell = document.querySelectorAll(".cell");
         let newBoard = gameboard.board;
         console.log(newBoard);
 
-        let cellDataSetX = parseInt(cell.dataset.x, 10);
-        let cellDataSetY = parseInt(cell.dataset.y, 10);
-        console.log(cellDataSetX, cellDataSetY);
+        cell.forEach(([x,y]) =>{
+            console.log(x);
+            console.log(y);
+        })
+
+        //let cellDataSetX = parseInt(cell.dataset.x, 10);
+        //let cellDataSetY = parseInt(cell.dataset.y, 10);
         for(let i = 0; i < newBoard.length; i++){
             for(let j = 0; j < newBoard.length; j++){
-                if(newBoard[i][j] === cellDataSetX && cellDataSetY){
-                    console.log("hi");
-                     
+                newBoard[i][j] = [cellDataSetX,cellDataSetY];
+                console.log([i][j]);
+                if(newBoard[i][j] === "miss"){
+                    cell.innerHTML = "miss";
                 }
             }
         }
