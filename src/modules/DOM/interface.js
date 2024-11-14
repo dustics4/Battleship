@@ -23,21 +23,15 @@ const Interface = (() => {
         let newBoard = gameboard.board;
         console.log(newBoard);
 
+        //let cellDataSetX = parseInt(cell.dataset.x);
+        //let cellDataSetY = parseInt(cell.dataset.y);
         for(let i = 0; i < newBoard.length; i++){
             for(let j = 0; j < newBoard.length; j++){
-                console.log(newBoard[0]);
-                cell.forEach((cell) => {
-                    //console.log(cell.dataset.x);
-                    let cellDataSetX = parseInt(cell.dataset.x);
-                    let cellDataSetY = parseInt(cell.dataset.y);
-                    //console.log(newBoard[0][0]);
-                    //console.log(newBoard[i][j]);
-                    //console.log(newBoard[i] +  "=" + cellDataSetX);
-                    if(newBoard[0][0] === "miss"){
-                        //console.log("hi");
-                        return true;
-                    }
-                })
+                console.log(newBoard[i][j]);
+                if(newBoard[i][j] === "miss"){
+                    console.log("hi");
+                    return true;
+                }
             }
         }
 
