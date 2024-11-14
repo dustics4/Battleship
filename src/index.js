@@ -6,6 +6,6 @@ Interface.createBoardElement("player");
 Interface.createBoardElement("computer");
 const player = new Player(false);
 const computer = new Player(true);
-Interface.renderBoard(player, player);
+Interface.renderBoard(player.gameboard, player);
 
 player.attackEnemy(computer.gameboard, [0,0])

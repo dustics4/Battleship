@@ -25,14 +25,19 @@ const Interface = (() => {
         const cell = document.querySelectorAll(".cell");
         let newBoard = board.board;
         for(let i = 0; i < cell.length; i++){
-            console.log(cell[i]);
-            if(newBoard[x][y] === "hit"){
+            //console.log(cell[i]);
+             
+        }
+        console.log(board.board);
+        board.board.forEach(([x,y]) =>{
+            console.log(x + " " + y);
+            if(newBoard[x][y] ){
                 const hit = document.createElement("div");
                 hit.classList.add("hit");
                 hit.innerHTML = "hit";
                 cell.appendChild(hit);
             }
-        }
+        })
          //loop through whole gameboard. Apply i,j in for loop to x,y of the datasets. 
          // Then prcoeed wit the logic.
     }
