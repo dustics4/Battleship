@@ -19,7 +19,7 @@ const Interface = (() => {
         }
     }
 
-    function renderBoard(board, playerType){
+    function renderBoard(gameboard, playerType){
         //for tomorrow, don't need if statements
         // think about rendering board only.
         const cell = document.querySelectorAll(".cell");
@@ -29,7 +29,7 @@ const Interface = (() => {
              
         }
         console.log(board.board);
-        board.board.forEach(([x,y]) =>{
+        gameboard.board.forEach(([x,y]) =>{
             console.log(x + " " + y);
             if(newBoard[x][y] ){
                 const hit = document.createElement("div");
