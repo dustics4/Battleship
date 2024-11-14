@@ -5,6 +5,12 @@
     gap: 10px;
 }
 
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .board-container {
     display: flex;
     flex-direction: column;

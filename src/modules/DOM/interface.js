@@ -19,31 +19,21 @@ const Interface = (() => {
     }
 
     function renderBoard(gameboard, playerType){
-        let cell = document.querySelectorAll(".cell");
+        let cell = document.querySelector(".cell");
         let newBoard = gameboard.board;
         console.log(newBoard);
 
-        //let cellDataSetX = parseInt(cell.dataset.x);
-        //let cellDataSetY = parseInt(cell.dataset.y);
+        let cellDataSetX = parseInt(cell.dataset.x, 10);
+        let cellDataSetY = parseInt(cell.dataset.y, 10);
+        console.log(cellDataSetX, cellDataSetY);
         for(let i = 0; i < newBoard.length; i++){
             for(let j = 0; j < newBoard.length; j++){
-                console.log(newBoard[i][j]);
-                if(newBoard[i][j] === "miss"){
+                if(newBoard[i][j] === cellDataSetX && cellDataSetY){
                     console.log("hi");
-                    return true;
+                     
                 }
             }
         }
-
-        
-            /*if(newBoard[x] === cell.x && newBoard[y] === cell.y){
-                
-                cell.innerHTML = "hit";
-                cell.appendChild(hit);
-            }*/
-
-         //loop through whole gameboard. Apply i,j in for loop to x,y of the datasets. 
-         // Then prcoeed wit the logic.
     }
 
     function addBoardClickListener(board){ //When a cell is clicked, it should send the coordinates to main.js for processing (i.e., sending them to the receiveAttack() method).
