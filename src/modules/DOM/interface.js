@@ -22,21 +22,22 @@ const Interface = (() => {
     function renderBoard(gameboard, playerType){
         //for tomorrow, don't need if statements
         // think about rendering board only.
-        const cell = document.querySelectorAll(".cell");
-        let newBoard = board.board;
+        let cell = document.querySelectorAll(".cell");
+        let newBoard = gameboard.board;
         for(let i = 0; i < cell.length; i++){
             //console.log(cell[i]);
              
         }
-        console.log(board.board);
-        gameboard.board.forEach(([x,y]) =>{
+        console.log(newBoard);
+        newBoard.forEach(([x,y]) =>{
             console.log(x + " " + y);
-            if(newBoard[x][y] ){
+
+            /*if(newBoard[x] === cell.x && newBoard[y] === cell.y){
                 const hit = document.createElement("div");
                 hit.classList.add("hit");
                 hit.innerHTML = "hit";
                 cell.appendChild(hit);
-            }
+            }*/
         })
          //loop through whole gameboard. Apply i,j in for loop to x,y of the datasets. 
          // Then prcoeed wit the logic.
