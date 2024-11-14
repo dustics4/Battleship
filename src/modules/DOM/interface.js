@@ -26,8 +26,14 @@ const Interface = (() => {
 
         for(let i = 0; i < newBoard.length; i++){
             for(let j = 0; j < newBoard.length; j++){
-                console.log(newBoard[i][j]);
-                cell.forEach(([x, y]) => {
+                cell.forEach((cell) => {
+                    //console.log(cell.dataset.x);
+                    let cellDataSetX = parseInt(cell.dataset.x);
+                    let cellDataSetY = parseInt(cell.dataset.y);
+                    
+                    if(newBoard[i][j]){
+                        console.log("hey");
+                    }
                 })
             }
         }
