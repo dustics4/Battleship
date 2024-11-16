@@ -22,23 +22,21 @@ const Interface = (() => {
         let cell = document.querySelectorAll(".cell");
         let newBoard = gameboard.board;
         console.log(newBoard);
-
-        
-
+        let datasetX;
+        let datasetY;
+        cell.forEach((cell) =>{
+            datasetX = cell.dataset.x;
+            datasetY = cell.dataset.y;
+        })
         //let cellDataSetX = parseInt(cell.dataset.x, 10);
         //let cellDataSetY = parseInt(cell.dataset.y, 10);
         for(let i = 0; i < newBoard.length; i++){
             for(let j = 0; j < newBoard.length; j++){
                 //newBoard[i][j] = [cellDataSetX,cellDataSetY];
-                cell.forEach((cell) =>{
-                    let datasetX = cell.dataset.x;
-                    let datasetY = cell.dataset.y;
-                    if(datasetX === newBoard[i] && datasetY === newBoard[j]){
-                        console.log("lol");
-                    }
-                })
-                console.log([i][j]);
-                if(newBoard[i][j] === "miss"){
+                
+                console.log(newBoard[datasetX][datasetY]);
+                
+                if(newBoard[datasetX][datasetY] === "miss"){
                     cell.innerHTML = "miss";
                 }
             }
