@@ -35,7 +35,6 @@ const Interface = (() => {
             datasetX =  parseInt(cell.dataset.x);
             datasetY =  parseInt(cell.dataset.y);
 
-
             newBoard[datasetX][datasetY];
             if(newBoard[datasetX][datasetY] ===  "miss"){
                 cell.innerHTML = "miss";
