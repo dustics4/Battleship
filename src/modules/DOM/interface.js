@@ -24,7 +24,7 @@ const Interface = (() => {
         let newBoard = gameboard.board;
         let datasetX;
         let datasetY;
-        let cellPlayerType = cell.dataset.board;
+        let cellPlayerType;
 
         console.log(newBoard);
 
@@ -32,12 +32,16 @@ const Interface = (() => {
         cell.forEach((cell) =>{
             datasetX =  parseInt(cell.dataset.x);
             datasetY =  parseInt(cell.dataset.y);
-            if(playerType === cellPlayerType){}
+            cellPlayerType = cell.dataset.board;
             newBoard[datasetX][datasetY];
-            console.log(newBoard[datasetX][datasetY]);
-            if(newBoard[datasetX][datasetY] ===  "miss"){
-                cell.innerHTML = "miss";
+            if(playerType === cellPlayerType){
+                if(newBoard[datasetX][datasetY] ===  "miss"){
+                    cell.innerHTML = "miss";
+                } 
             }
+           
+            console.log(newBoard[datasetX][datasetY]);
+            
         })
       
     }
