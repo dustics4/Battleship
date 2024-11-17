@@ -18,30 +18,28 @@ const Interface = (() => {
                 boardContainer.appendChild(cell); //appending to the container
             }
         }
+        console.log(document.querySelectorAll('[data-board="player"]'))
     }
 
     function renderBoard(gameboard, playerType){
-        let cell = document.querySelectorAll(`[data-board="${playerType}"].cell`);
+        let cell = document.querySelectorAll(`[data-board="${playerType}"]`);
         console.log(cell);
         let newBoard = gameboard.board;
         let datasetX;
         let datasetY;
-        let cellPlayerType;
 
         console.log(newBoard);
 
-       
+
         cell.forEach((cell) =>{
             datasetX =  parseInt(cell.dataset.x);
             datasetY =  parseInt(cell.dataset.y);
-            cellPlayerType = cell.dataset.board;
+
 
             newBoard[datasetX][datasetY];
-            if(playerType === cellPlayerType){
-                if(newBoard[datasetX][datasetY] ===  "miss"){
-                    cell.innerHTML = "miss";
-                } 
-            }
+            if(newBoard[datasetX][datasetY] ===  "miss"){
+                cell.innerHTML = "miss";
+            } 
            
             console.log(newBoard[datasetX][datasetY]);
             
