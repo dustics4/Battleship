@@ -11,6 +11,7 @@ const Interface = (() => {
             for(let j = 0; j < 10; j++){ //second loop to iterate over y coordinates
                 const cell = document.createElement('div'); //creating a div
                 cell.classList.add('cell'); //adding class cell to the div
+                cell.dataset.board = `${playerType}`;
                 cell.dataset.x = i; //indexing x
                 cell.dataset.y = j; //indexing y
                 boardContainer.appendChild(cell); //appending to the container
@@ -21,12 +22,17 @@ const Interface = (() => {
     function renderBoard(gameboard, playerType){
         let cell = document.querySelectorAll(".cell");
         let newBoard = gameboard.board;
-        console.log(newBoard);
         let datasetX;
         let datasetY;
+        let cellPlayerType = cell.dataset.board;
+
+        console.log(newBoard);
+
+       
         cell.forEach((cell) =>{
             datasetX =  parseInt(cell.dataset.x);
             datasetY =  parseInt(cell.dataset.y);
+            if(playerType === cellPlayerType){}
             newBoard[datasetX][datasetY];
             console.log(newBoard[datasetX][datasetY]);
             if(newBoard[datasetX][datasetY] ===  "miss"){
