@@ -6,6 +6,7 @@ const Interface = (() => {
         //boardContainer variable / use playertype within this
         let boardContainer = document.querySelector(`#${playerType}-board`);
         console.log(boardContainer);
+        
 
         for(let i = 0; i < 10; i++){ //first loop to iterate over x coordinates
             for(let j = 0; j < 10; j++){ //second loop to iterate over y coordinates
@@ -20,7 +21,8 @@ const Interface = (() => {
     }
 
     function renderBoard(gameboard, playerType){
-        let cell = document.querySelectorAll(".cell");
+        let cell = document.querySelectorAll(`[data-board="${playerType}"].cell`);
+        console.log(cell);
         let newBoard = gameboard.board;
         let datasetX;
         let datasetY;
@@ -33,6 +35,7 @@ const Interface = (() => {
             datasetX =  parseInt(cell.dataset.x);
             datasetY =  parseInt(cell.dataset.y);
             cellPlayerType = cell.dataset.board;
+
             newBoard[datasetX][datasetY];
             if(playerType === cellPlayerType){
                 if(newBoard[datasetX][datasetY] ===  "miss"){
