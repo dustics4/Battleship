@@ -25,24 +25,15 @@ const Interface = (() => {
         let datasetX;
         let datasetY;
         cell.forEach((cell) =>{
-            datasetX = cell.dataset.x;
-            datasetY = cell.dataset.y;
-        })
-        //let cellDataSetX = parseInt(cell.dataset.x, 10);
-        //let cellDataSetY = parseInt(cell.dataset.y, 10);
-        for(let i = 0; i < newBoard.length; i++){
-            for(let j = 0; j < newBoard.length; j++){
-                //newBoard[i][j] = [cellDataSetX,cellDataSetY];
-                
-                console.log(newBoard[datasetX][datasetY]);
-                
-                if(newBoard[datasetX][datasetY] === "miss"){
-                    cell.innerHTML = "miss";
-                }
+            datasetX =  parseInt(cell.dataset.x);
+            datasetY =  parseInt(cell.dataset.y);
+            newBoard[datasetX][datasetY];
+            console.log(newBoard[datasetX][datasetY]);
+            if(newBoard[datasetX][datasetY] ===  "miss"){
+                cell.innerHTML = "miss";
             }
-        }
-
-        
+        })
+      
     }
 
     function addBoardClickListener(board){ //When a cell is clicked, it should send the coordinates to main.js for processing (i.e., sending them to the receiveAttack() method).
