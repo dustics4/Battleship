@@ -38,9 +38,11 @@ const Interface = (() => {
             newBoard[datasetX][datasetY];
             if(newBoard[datasetX][datasetY] ===  "miss"){
                 cell.innerHTML = "X";
+                cell.classList.add("miss");
             }
             if(newBoard[datasetX][datasetY] ===  "hit"){
                 cell.innerHTML = "HIT";
+                cell.classList.add("hit");
             } 
            
             console.log(newBoard[datasetX][datasetY]);
