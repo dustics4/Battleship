@@ -1,5 +1,6 @@
 import Gameboard from "../gameboard.js"
 import Player from "../player.js";
+import Ship from "../ship.js";
 
 const Interface = (() => {
     function createBoardElement(playerType){
@@ -39,12 +40,14 @@ const Interface = (() => {
             if(newBoard[datasetX][datasetY] ===  "miss"){
                 cell.innerHTML = "X";
                 cell.classList.add("miss");
-            }
-            if(newBoard[datasetX][datasetY] ===  "hit"){
-                cell.innerHTML = "HIT";
+            }else if(newBoard[datasetX][datasetY] ===  "hit"){
+                cell.innerHTML = "X";
                 cell.classList.add("hit");
-            } 
+            }else if(newBoard[datasetX][datasetY] instanceof Ship){
+                cell.classList.add("ship");
+            }
            
+            
             console.log(newBoard[datasetX][datasetY]);
             
         })
