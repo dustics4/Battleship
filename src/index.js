@@ -13,7 +13,11 @@ Interface.createBoardElement("computer");
 const player = new Player(false);
 const computer = new Player(true);
 const ship = new Ship(1);
+const ship2 = new Ship(3);
+
 player.gameboard.placeShip(ship, [[0,0]]);
+player.gameboard.placeShip(ship, [[0,1], [0,2],[0,3]]);
+
 
 computer.attackEnemy(player.gameboard, [0,0])
 
