@@ -63,6 +63,21 @@ const Interface = (() => {
             {id: 'battleship', length: 4},
             {id: 'carrier', length: 5}
         ]
+
+        ships.forEach(ship => {
+            const shipDiv = document.createElement('div');
+            shipDiv.classList.add('ship');
+            shipDiv.id = ship.id;
+            shipDiv.dataset.length = ship.length;
+            shipDiv.draggable = true;
+
+            for(let i = 0; i < ship.length; i++){
+                let cell = document.createElement('div');
+                cell.classList.add('cell', 'ship-cell');
+                shipDiv.appendChild(cell);
+            }
+            playerShipsContainer.appendChild(shipDiv);
+        })
     }
 
     function addBoardClickListener(board){ //When a cell is clicked, it should send the coordinates to main.js for processing (i.e., sending them to the receiveAttack() method).

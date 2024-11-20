@@ -15,6 +15,7 @@ let carrier = new Ship(5);
 
 Interface.createBoardElement("player");
 Interface.createBoardElement("computer");
+Interface.renderShips();
 const player = new Player(false);
 const computer = new Player(true);
 

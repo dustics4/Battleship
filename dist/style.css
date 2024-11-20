@@ -1,25 +1,39 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
 #game-container {
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
     gap: 10px;
+    margin-bottom: 10px;
 }
 /*______ Ships ________*/
 .ship {
-    width: 40px;
-    height: 40px;
-    border: 2px solid black;
-    background-color: darkgray;
-    display: inline-block;
-    margin: 5px;
+    display: flex;
+    flex-direction: row; /* Align cells horizontally */
+    gap: 2px;
     cursor: grab;
-    text-align: center;
-    font-size: 12px;
-    line-height: 40px;
+    margin-bottom: 10px; /* Prevent overlap */
 }
 
-.ship.dragging {
-    opacity: 0.5;
+/* Different colors for different ships */
+.ship#submarine .ship-cell {
+    background-color: #B22222;
+}
+.ship#patrolBoat .ship-cell {
+    background-color: #FF7F50; 
+}
+.ship#destroyer .ship-cell {
+    background-color: #4682B4;
+}
+.ship#battleship .ship-cell {
+    background-color: #228B22; 
+}
+.ship#carrier .ship-cell {
+    background-color: #8A2BE2; 
 }
 
 .cell.drop-valid {
@@ -31,6 +45,7 @@
     border: 2px dashed red;
     background-color: lightcoral;
 }
+
 
 /* _______________*/
 #header {
