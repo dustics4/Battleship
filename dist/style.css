@@ -1,77 +1,66 @@
-body{
+/* General Reset */
+body {
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
 }
 
-#game-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-/*______ Ships ________*/
-.ship {
-    display: flex;
-    flex-direction: row; /* Align cells horizontally */
-    gap: 2px;
-    cursor: grab;
-    margin-bottom: 10px; /* Prevent overlap */
-}
-
-/* Different colors for different ships */
-.ship#submarine .ship-cell {
-    background-color: #B22222;
-}
-.ship#patrolBoat .ship-cell {
-    background-color: #FF7F50; 
-}
-.ship#destroyer .ship-cell {
-    background-color: #4682B4;
-}
-.ship#battleship .ship-cell {
-    background-color: #228B22; 
-}
-.ship#carrier .ship-cell {
-    background-color: #8A2BE2; 
-}
-
-.cell.drop-valid {
-    border: 2px dashed green;
-    background-color: lightgreen;
-}
-
-.cell.drop-invalid {
-    border: 2px dashed red;
-    background-color: lightcoral;
-}
-
-
-/* _______________*/
+/* Header */
 #header {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
 }
 
+#header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* Game Container */
+#game-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Board Container */
 .board-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
+.board-container h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #444;
+}
+
+/* Gameboard */
 .gameboard {
     display: grid;
     grid-template-columns: repeat(10, 40px);
     grid-template-rows: repeat(10, 40px);
     gap: 2px;
+    background-color: #87CEEB; /* Light blue for the board background */
+    padding: 5px;
+    border: 2px solid #333;
+    border-radius: 10px;
 }
 
 .cell {
     width: 40px;
     height: 40px;
-    border: 1px solid #333;
-    background-color: lightblue;
+    border: 1px solid #555;
+    background-color: #B0E0E6; /* Light pastel blue */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,13 +68,94 @@ body{
 }
 
 .cell.hit {
-    background-color: red;
+    background-color: #FF6347; 
 }
 
 .cell.miss {
-    background-color: gray;
+    background-color: #C0C0C0; 
 }
 
-.cell.ship {
-    background-color: green;
+
+/* Ship Container */
+.ship-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    border-top: 4px solid #222;
+}
+
+.player-ships {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 20px;
+}
+
+/* Individual Ship */
+.ship {
+    display: flex;
+    gap: 2px;
+    cursor: grab;
+    justify-content: center;
+    padding: 0; 
+    border: none; 
+    background-color: transparent; 
+}
+
+.ship.dragging {
+    opacity: 0.7; /
+}
+
+.ship-cell {
+    width: 40px; 
+    height: 40px;
+    background-color: #444; 
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ship Colors */
+#submarine .ship-cell {
+    background-color: #B22222; 
+}
+
+#patrolBoat .ship-cell {
+    background-color: #FF7F50; 
+}
+
+#destroyer .ship-cell {
+    background-color: #4682B4; 
+}
+
+#battleship .ship-cell {
+    background-color: #228B22; 
+}
+
+#carrier .ship-cell {
+    background-color: #8A2BE2; 
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #game-container {
+        grid-template-columns: 1fr;
+    }
+
+    .player-ships {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .cell {
+        width: 30px;
+        height: 30px;
+    }
+
+    .gameboard {
+        grid-template-columns: repeat(10, 30px);
+        grid-template-rows: repeat(10, 30px);
+    }
 }

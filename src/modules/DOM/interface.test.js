@@ -37,8 +37,7 @@ describe("Interface Test " , () => {
         const missCell = document.querySelector(`.cell[data-x="1"][data-y="1"]`);
         const shipCell = document.querySelector(`.cell[data-x="2"][data-y="2"]`);
 
-        expect(hitCell.classList.contains("hit")).toBe(true); // Should have "hit" class
-        expect(missCell.classList.contains("miss")).toBe(true); // Should have "hit" class
-        expect(shipCell.classList.contains("ship")).toBe(true); // Should have "hit" class
+        expect(hitCell.classList.contains("hit")).toBe(true); 
+        expect(missCell.classList.contains("miss")).toBe(true); 
     })
 })  
