@@ -54,11 +54,22 @@ const Interface = (() => {
       
     }
 
+    function renderShips(){
+        const playerShipsContainer = document.querySelector('.player-ships');
+        let ships = [
+            {id: 'submarine', length: 1},
+            {id: 'patrolBoat', length: 2},
+            {id: 'destroyer', length: 3},
+            {id: 'battleship', length: 4},
+            {id: 'carrier', length: 5}
+        ]
+    }
+
     function addBoardClickListener(board){ //When a cell is clicked, it should send the coordinates to main.js for processing (i.e., sending them to the receiveAttack() method).
 
     }
 
-    return {createBoardElement, renderBoard, addBoardClickListener};
+    return {createBoardElement, renderBoard, addBoardClickListener, renderShips};
 })();
 
 export default Interface;

@@ -19,10 +19,6 @@ const player = new Player(false);
 const computer = new Player(true);
 
 
-player.gameboard.placeShip(submarine, [[0,0]]);
-player.gameboard.placeShip(patrolBoat, [[0,1], [0,2]]);
-
-
 computer.attackEnemy(player.gameboard, [0,0])
 
 //console.log(player.gameboard);
