@@ -3,6 +3,11 @@ import Player from "./modules/player.js";
 import Gameboard from "./modules/gameboard.js";
 import Ship from "./modules/ship.js";
 
+let submarine = new Ship(1);
+let patrolBoat = new Ship(2);
+let destroyer = new Ship(3);
+let battleship = new Ship(4);
+let carrier = new Ship(5);
 
 // to drag and drop you will need to premake the ships. In a different grid.
 // You will then need to assign them to a player
@@ -12,11 +17,10 @@ Interface.createBoardElement("player");
 Interface.createBoardElement("computer");
 const player = new Player(false);
 const computer = new Player(true);
-const ship = new Ship(1);
-const ship2 = new Ship(3);
 
-player.gameboard.placeShip(ship, [[0,0]]);
-player.gameboard.placeShip(ship, [[0,1], [0,2],[0,3]]);
+
+player.gameboard.placeShip(submarine, [[0,0]]);
+player.gameboard.placeShip(patrolBoat, [[0,1], [0,2]]);
 
 
 computer.attackEnemy(player.gameboard, [0,0])
