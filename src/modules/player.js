@@ -4,14 +4,25 @@ class Player {
     constructor(isComputer){
         this.gameboard = new Gameboard();
         this.isComputer = isComputer;
+        this.attackedPosition = new Set();
     }
 
     attackEnemy(enemyBoard , coordinates){ //human
-        try{
+        try {
             const [x, y] = coordinates; 
-            enemyBoard.receiveAttack(x,y);
-        }catch(error){
-            console.log("Error during attack : ", error.message);
+            const coordKey = `${x},${y}`; // Create a unique key for the position
+
+            // Check if the position has already been attacked
+            if (this.attackedPosition.has(coordKey)) {
+                console.log("Position already attacked. Choose another target.");
+                return false; // Indicate the attack was not performed
+            }
+
+            enemyBoard.receiveAttack(x, y);
+            this.attackedPosition.add(coordKey); // Mark this position as attacked
+            return true; // Indicate the attack was successful
+        } catch (error) {
+            console.log("Error during attack: ", error.message);
             throw error;
         }
         
@@ -20,10 +31,16 @@ class Player {
     randomAttack(enemyBoard){ //computerAtack
         //math.random for attack on x,y
         try{
-            const x = Math.floor(Math.random() * 10);
-            const y = Math.floor(Math.random() * 10);
+            let x,y, coordKey;
+
+            do{
+                x = Math.floor(Math.random() * 10);
+                y = Math.floor(Math.random() * 10);
+                coordKey = `${x},${y}`;
+            }while(this.attackedPosition.has(coordKey));
 
             enemyBoard.receiveAttack(x,y)
+            this.attackedPosition.add(coordKey);
         }catch(error){
             console.log("Error during attack : ", error.message);
             throw error;

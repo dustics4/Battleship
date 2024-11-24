@@ -26,9 +26,19 @@ computer.attackEnemy(player.gameboard, [0,0])
 //player.gameboard.renderBoard();
 Interface.renderBoard(player.gameboard, "player");
 Interface.addBoardClickListener((coordinates) => {
-    player.attackEnemy(computer.gameboard, coordinates); // Player attack
-    Interface.renderBoard(computer.gameboard, 'computer'); // Update computer's board
-    // Then computer's random attack
-    computer.randomAttack(player.gameboard);
-    Interface.renderBoard(player.gameboard, 'player'); // Update player's board
+    const playerAttackSuccessful = player.attackEnemy(computer.gameboard, coordinates);
+
+    if (playerAttackSuccessful) {
+        // Update the computer's board after a valid player attack
+        Interface.renderBoard(computer.gameboard, 'computer');
+
+        // Computer's turn: Perform a random attack
+        computer.randomAttack(player.gameboard);
+
+        // Update the player's board after the computer's attack
+        Interface.renderBoard(player.gameboard, 'player');
+    } else {
+        // Notify the player that their move was invalid
+        console.log("Invalid move. You already attacked this position.");
+    }
 });
