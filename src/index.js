@@ -25,3 +25,4 @@ computer.attackEnemy(player.gameboard, [0,0])
 //console.log(player.gameboard);
 //player.gameboard.renderBoard();
 Interface.renderBoard(player.gameboard, "player");
+Interface.addBoardClickListener(computer.gameboard);

@@ -71,7 +71,10 @@ const Interface = (() => {
     }
 
     function addBoardClickListener(board){ 
-
+        let boardContainer = document.getElementById('computer-board').querySelector('.gameboard');
+        console.log(boardContainer);
+        let cell = boardContainer.querySelectorAll('.cell');
+        console.log(cell)
     }
 
     return {createBoardElement, renderBoard, addBoardClickListener, renderShips};
