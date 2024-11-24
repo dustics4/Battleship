@@ -70,11 +70,17 @@ const Interface = (() => {
         })
     }
 
-    function addBoardClickListener(board){ 
-        let boardContainer = document.getElementById('computer-board').querySelector('.gameboard');
-        console.log(boardContainer);
-        let cell = boardContainer.querySelectorAll('.cell');
-        console.log(cell)
+    function addBoardClickListener(callback){ 
+        let boardContainer = document.getElementById('computer-board');
+        let cells = boardContainer.querySelectorAll('.cell');
+
+        cells.forEach((cell) => {
+            cell.addEventListener('click', () => {
+                const x = cell.dataset.x;
+                const y = cell.dataset.y;
+                callback([parseInt(x), parseInt(y)]);
+            })
+        })
     }
 
     return {createBoardElement, renderBoard, addBoardClickListener, renderShips};
