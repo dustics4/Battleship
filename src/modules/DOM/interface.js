@@ -69,21 +69,50 @@ const Interface = (() => {
             playerShipsContainer.appendChild(shipDiv);
         })
     }
+    let gameStarted = false;
 
-    function addBoardClickListener(callback){ 
-        let boardContainer = document.getElementById('computer-board');
-        let cells = boardContainer.querySelectorAll('.cell');
-
+    function enableStartButton() {
+        const startButton = document.getElementById("start-game");
+        startButton.addEventListener("click", () => {
+            gameStarted = true;
+            startButton.disabled = true; // Disable the button after starting
+            console.log("Game started!");
+            toggleActiveBoard(true); // Player starts the game
+        });
+    }
+    
+    function addBoardClickListener(callback) {
+        const boardContainer = document.getElementById('computer-board');
+        const cells = boardContainer.querySelectorAll('.cell');
+    
         cells.forEach((cell) => {
             cell.addEventListener('click', () => {
+                if (!gameStarted) {
+                    console.log("Start the game first!");
+                    return;
+                }
+    
                 const x = cell.dataset.x;
                 const y = cell.dataset.y;
                 callback([parseInt(x), parseInt(y)]);
-            })
-        })
+            });
+        });
     }
 
-    return {createBoardElement, renderBoard, addBoardClickListener, renderShips};
+    function toggleActiveBoard(isPlayerTurn) {
+        const playerBoard = document.getElementById("player-board");
+        const computerBoard = document.getElementById("computer-board");
+    
+        if (isPlayerTurn) {
+            playerBoard.classList.add("inactive");
+            computerBoard.classList.remove("inactive");
+        } else {
+            playerBoard.classList.remove("inactive");
+            computerBoard.classList.add("inactive");
+        }
+    }
+
+    return {createBoardElement, renderBoard, addBoardClickListener, renderShips,enableStartButton, toggleActiveBoard};
 })();
 
 export default Interface;
