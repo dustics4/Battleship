@@ -18,23 +18,22 @@ Interface.enableStartButton();
 const player = new Player(false);
 const computer = new Player(true);
 
-computer.attackEnemy(player.gameboard, [0,0])
 
 Interface.renderBoard(player.gameboard, "player");
 Interface.addBoardClickListener((coordinates) => {
     const playerAttackSuccessful = player.attackEnemy(computer.gameboard, coordinates);
 
     if (playerAttackSuccessful) {
-        // Update the computer's board after a valid player attack
-        Interface.renderBoard(computer.gameboard, 'computer');
+        Interface.renderBoard(computer.gameboard, "computer");
+        Interface.toggleActiveBoard(false); // Switch to computer's turn
 
-        // Computer's turn: Perform a random attack
-        computer.randomAttack(player.gameboard);
-
-        // Update the player's board after the computer's attack
-        Interface.renderBoard(player.gameboard, 'player');
+        // Simulate computer's turn after a short delay for realism
+        setTimeout(() => {
+            computer.randomAttack(player.gameboard);
+            Interface.renderBoard(player.gameboard, "player");
+            Interface.toggleActiveBoard(true); // Switch back to player's turn
+        }, 1000);
     } else {
-        // Notify the player that their move was invalid
         console.log("Invalid move. You already attacked this position.");
     }
 });

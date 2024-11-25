@@ -3,6 +3,8 @@ import Player from "../player.js";
 import Ship from "../ship.js";
 
 const Interface = (() => {
+    let gameStarted = false;
+
     function createBoardElement(playerType){
         //boardContainer variable / use playertype within this
         let boardContainer = document.querySelector(`#${playerType}-board`);        
@@ -69,7 +71,6 @@ const Interface = (() => {
             playerShipsContainer.appendChild(shipDiv);
         })
     }
-    let gameStarted = false;
 
     function enableStartButton() {
         const startButton = document.getElementById("start-game");
@@ -82,21 +83,7 @@ const Interface = (() => {
     }
     
     function addBoardClickListener(callback) {
-        const boardContainer = document.getElementById('computer-board');
-        const cells = boardContainer.querySelectorAll('.cell');
-    
-        cells.forEach((cell) => {
-            cell.addEventListener('click', () => {
-                if (!gameStarted) {
-                    console.log("Start the game first!");
-                    return;
-                }
-    
-                const x = cell.dataset.x;
-                const y = cell.dataset.y;
-                callback([parseInt(x), parseInt(y)]);
-            });
-        });
+       
     }
 
     function toggleActiveBoard(isPlayerTurn) {

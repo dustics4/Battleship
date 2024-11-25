@@ -159,3 +159,15 @@ body {
         grid-template-rows: repeat(10, 30px);
     }
 }
+
+.gameboard.inactive {
+    background-color: #555; /* Dark gray */
+    opacity: 0.6; /* Slight transparency to indicate inactivity */
+    pointer-events: none; /* Disable interactions */
+}
+
+.gameboard.active {
+    background-color: #87CEEB; 
+    opacity: 1;
+    pointer-events: auto; 
+}
