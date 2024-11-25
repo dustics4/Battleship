@@ -85,7 +85,6 @@ const Interface = (() => {
     function addBoardClickListener(callback) {
        const boardContainer = document.getElementById('computer-board');
        let cells  = boardContainer.querySelectorAll('.cell');
-
        cells.forEach((cell) => {
             cell.addEventListener('click', () =>{
                 if(!gameStarted){
@@ -112,7 +111,23 @@ const Interface = (() => {
         }
     }
 
-    return {createBoardElement, renderBoard, addBoardClickListener, renderShips,enableStartButton, toggleActiveBoard};
+    function enableDragAndDrop(){
+
+    }
+
+    function isPlacementValid(){
+
+    }
+
+    function placeShipOnBoard(){
+
+    }
+
+    function enableOrentationToggle(){
+        
+    }
+
+    return {createBoardElement, renderBoard, addBoardClickListener, renderShips,enableStartButton, toggleActiveBoard, enableDragAndDrop};
 })();
 
 export default Interface;
