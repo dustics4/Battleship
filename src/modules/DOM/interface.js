@@ -83,7 +83,12 @@ const Interface = (() => {
     }
     
     function addBoardClickListener(callback) {
-       
+       const boardContainer = document.getElementById('computer-board');
+       let cells  = boardContainer.querySelectorAll('.cell');
+
+       cells.forEach((cell) => {
+        
+       })
     }
 
     function toggleActiveBoard(isPlayerTurn) {
