@@ -87,7 +87,15 @@ const Interface = (() => {
        let cells  = boardContainer.querySelectorAll('.cell');
 
        cells.forEach((cell) => {
-        
+            cell.addEventListener('click', () =>{
+                if(!gameStarted){
+                    console.log("start the game first!");
+                    return
+                }
+                const x = cell.dataset.x;
+                const y = cell.dataset.y;
+                callback([parseInt(x),parseInt(y)]);
+            })
        })
     }
 
