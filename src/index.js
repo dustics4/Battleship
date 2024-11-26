@@ -13,6 +13,8 @@ const computer = new Player(true);
 
 
 Interface.renderBoard(player.gameboard, "player");
+Interface.renderBoard(computer.gameboard, "computer");
+
 Interface.addBoardClickListener((coordinates) => {
     const playerAttackSuccessful = player.attackEnemy(computer.gameboard, coordinates);
     console.log("Player attacked at:", coordinates)
