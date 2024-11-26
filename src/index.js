@@ -7,6 +7,7 @@ Interface.createBoardElement("player");
 Interface.createBoardElement("computer");
 Interface.renderShips();
 Interface.enableStartButton();
+Interface.enableDragAndDrop();
 
 const player = new Player(false);
 const computer = new Player(true);

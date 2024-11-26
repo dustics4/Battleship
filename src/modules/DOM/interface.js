@@ -111,23 +111,28 @@ const Interface = (() => {
         }
     }
 
+    
     function enableDragAndDrop(){
-
+        let boardContainer = document.getElementById("player-board");
+        
     }
-
+    
     function isPlacementValid(){
 
     }
-
+    
     function placeShipOnBoard(){
-
+    
     }
 
     function enableOrentationToggle(){
-        
+    
     }
 
     return {createBoardElement, renderBoard, addBoardClickListener, renderShips,enableStartButton, toggleActiveBoard, enableDragAndDrop};
 })();
 
 export default Interface;
+
+
+
