@@ -2,8 +2,8 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
 }
 
 /* Header */
@@ -11,14 +11,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #333;
-    color: white;
+    background-color: #1e212d;
+    color: #ffffff;
     padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #header h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin: 0;
+    letter-spacing: 2px;
 }
 
 /* Game Container */
@@ -26,8 +28,8 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 30px;
+    padding: 40px 20px;
 }
 
 /* Board Container */
@@ -35,13 +37,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .board-container h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin: 0;
-    color: #444;
+    color: #333;
+    text-transform: uppercase;
 }
 
 /* Gameboard */
@@ -49,30 +52,50 @@ body {
     display: grid;
     grid-template-columns: repeat(10, 40px);
     grid-template-rows: repeat(10, 40px);
-    gap: 2px;
-    background-color: #87CEEB; /* Light blue for the board background */
-    padding: 5px;
+    gap: 3px;
+    background-color: #e3f2fd; /* Light blue for the board background */
+    padding: 10px;
     border: 2px solid #333;
-    border-radius: 10px;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
 }
 
 .cell {
     width: 40px;
     height: 40px;
-    border: 1px solid #555;
-    background-color: #B0E0E6; /* Light pastel blue */
+    border: 1px solid #6c757d;
+    background-color: #bde0fe; /* Light pastel blue */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.cell:hover {
+    transform: scale(1.1);
+    background-color: #90caf9;
 }
 
 .cell.hit {
-    background-color: #FF6347; 
+    background-color: #e57373; /* Red for hits */
+    animation: pulse-hit 0.3s ease;
 }
 
 .cell.miss {
-    background-color: #C0C0C0; 
+    background-color: #cfd8dc; /* Gray for misses */
+}
+
+.gameboard.inactive {
+    background-color: #555; /* Dark gray */
+    opacity: 0.6; /* Slight transparency to indicate inactivity */
+    pointer-events: none; /* Disable interactions */
+}
+
+.gameboard.active {
+    background-color: #87CEEB; 
+    opacity: 1;
+    pointer-events: auto; 
 }
 
 
@@ -81,62 +104,100 @@ body {
     display: flex;
     justify-content: center;
     padding: 20px;
-    background-color: #333;
-    color: white;
-    border-top: 4px solid #222;
+    background-color: #212529;
+    color: #ffffff;
+    border-top: 5px solid #1c1f26;
 }
 
 .player-ships {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
+    gap: 15px;
     padding: 20px;
+    justify-items: center;
 }
 
 /* Individual Ship */
 .ship {
     display: flex;
-    gap: 2px;
+    gap: 3px;
     cursor: grab;
     justify-content: center;
-    padding: 0; 
-    border: none; 
-    background-color: transparent; 
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .ship.dragging {
-    opacity: 0.7; /
+    opacity: 0.7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
 }
 
 .ship-cell {
     width: 40px; 
     height: 40px;
-    background-color: #444; 
-    border: 1px solid black;
+    background-color: #555; 
+    border: 2px solid #222;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 4px;
 }
 
 /* Ship Colors */
 #submarine .ship-cell {
-    background-color: #B22222; 
+    background-color: #ef5350; /* Soft Red */
 }
 
 #patrolBoat .ship-cell {
-    background-color: #FF7F50; 
+    background-color: #ffa726; /* Soft Orange */
 }
 
 #destroyer .ship-cell {
-    background-color: #4682B4; 
+    background-color: #42a5f5; /* Soft Blue */
 }
 
 #battleship .ship-cell {
-    background-color: #228B22; 
+    background-color: #66bb6a; /* Soft Green */
 }
 
 #carrier .ship-cell {
-    background-color: #8A2BE2; 
+    background-color: #ab47bc; /* Soft Purple */
+}
+
+/* Button Styling */
+
+#controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#start-game {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: linear-gradient(45deg, #1e88e5, #42a5f5);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#start-game:hover {
+    background: linear-gradient(45deg, #1565c0, #1e88e5);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#start-game:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive Adjustments */
@@ -160,14 +221,15 @@ body {
     }
 }
 
-.gameboard.inactive {
-    background-color: #555; /* Dark gray */
-    opacity: 0.6; /* Slight transparency to indicate inactivity */
-    pointer-events: none; /* Disable interactions */
-}
-
-.gameboard.active {
-    background-color: #87CEEB; 
-    opacity: 1;
-    pointer-events: auto; 
+/* Keyframes */
+@keyframes pulse-hit {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

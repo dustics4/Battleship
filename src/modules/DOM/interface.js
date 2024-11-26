@@ -114,6 +114,7 @@ const Interface = (() => {
     
     function enableDragAndDrop(){
         let boardContainer = document.getElementById("player-board");
+        let cells  = boardContainer.querySelectorAll('.cell');
 
         let ships = document.querySelectorAll('.ship');
         ships.forEach((ship) => {
@@ -126,7 +127,15 @@ const Interface = (() => {
                 event.target.classList.remove("dragging");
             })
         })
-
+        
+        cells.forEach((cell) => {
+            cell.addEventListener("dragenter", (event) => {
+                event.preventDefault();
+            })
+            cell.addEventListener("dragover", (event) => {
+                event.preventDefault();
+            })
+        })
         
     }
     
