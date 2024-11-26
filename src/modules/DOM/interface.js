@@ -114,7 +114,11 @@ const Interface = (() => {
     
     function enableDragAndDrop(){
         let boardContainer = document.getElementById("player-board");
-        
+
+        let ships = document.querySelectorAll('.ship');
+        ships.forEach((ship) => {
+            console.log(ship);
+        })
     }
     
     function isPlacementValid(){
