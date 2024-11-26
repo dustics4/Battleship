@@ -118,7 +118,16 @@ const Interface = (() => {
         let ships = document.querySelectorAll('.ship');
         ships.forEach((ship) => {
             console.log(ship);
+            ship.addEventListener("dragstart", (event) => {
+                event.target.classList.add("dragging");
+            })
+            
+            ship.addEventListener("dragend", (event) => {
+                event.target.classList.remove("dragging");
+            })
         })
+
+        
     }
     
     function isPlacementValid(){
