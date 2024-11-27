@@ -128,10 +128,12 @@ const Interface = (() => {
                 event.target.classList.remove("dragging");
             })
         })
-        
+
+        let dragged = null;
+
         cells.forEach((cell) => {
-            cell.addEventListener("dragenter", (event) => {
-                event.preventDefault();
+            cell.addEventListener("dragstart", (event) => {
+                dragged = event.target;
             })
             cell.addEventListener("dragover", (event) => {
                 event.preventDefault();
@@ -140,10 +142,13 @@ const Interface = (() => {
             cell.addEventListener("drop", (e) => {
                 e.preventDefault();
                 if(e.target.className === "cell"){
+                    dragged.parentNode.removeChild(dragged);
+                    e.target.appendChild(dragged);
                     console.log(cell.dataset.y);
                     console.log(cell.dataset.x);
                     const ship = document.getElementById('submarine');
                     console.log(ship);
+                    
                 }
             })
         })
