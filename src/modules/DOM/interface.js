@@ -116,6 +116,8 @@ const Interface = (() => {
         let boardContainer = document.getElementById("player-board");
         let cells  = boardContainer.querySelectorAll('.cell');
 
+        let draggedShip = null;
+
         let ships = document.querySelectorAll('.ship');
         ships.forEach((ship) => {
             console.log(ship);
