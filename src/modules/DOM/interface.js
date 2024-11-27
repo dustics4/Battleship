@@ -142,6 +142,8 @@ const Interface = (() => {
                 if(e.target.className === "cell"){
                     console.log(cell.dataset.y);
                     console.log(cell.dataset.x);
+                    const ship = document.getElementById('submarine');
+                    console.log(ship);
                 }
             })
         })
