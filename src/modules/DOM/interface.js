@@ -162,8 +162,8 @@ const Interface = (() => {
     function placeShipOnBoard(x, y, length){
         const board = document.getElementById("player-board");
         for(let i = 0; i < length; i++){
-            
-            
+            let cell;
+            cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`)
         }
     }
 
