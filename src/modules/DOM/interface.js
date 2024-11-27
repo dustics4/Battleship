@@ -155,8 +155,16 @@ const Interface = (() => {
         
     }
     
-    function isPlacementValid(x, y, shipLength ){
-        
+    function isPlacementValid(x, y, shipLength, orientation ){
+        let board = document.getElementById("player-board");
+        for(let i = 0; i < shipLength; i++){
+            let cellX = orientation === "horizontal" ? x : x + i;
+            let cellY = orientation === "horizontal" ? y + i : y;
+
+            if(cellX >= 10 || cellY >= 10 || cellX < 0 || cellY < 0) return false;
+
+            cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`)
+        }
     }
     
     function placeShipOnBoard(x, y, length, orientation){
@@ -165,8 +173,7 @@ const Interface = (() => {
             let cellX = orientation === "horizontal" ? x : x + i;
             let cellY = orientation === "horizontal" ? y + i : y;
 
-            let cell;
-            cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`)
+            let cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`)
 
             if(cell){
                 cell.classList.add("ship");
