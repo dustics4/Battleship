@@ -148,7 +148,7 @@ const Interface = (() => {
                 const y = parseInt(cell.dataset.y , 10);
 
                 let shipLength = parseInt(draggedShip.dataset.length, 10);
-
+                placeShipOnBoard(x,y,shipLength);
                 e.target.appendChild(draggedShip);
             })
         })
@@ -162,7 +162,8 @@ const Interface = (() => {
     function placeShipOnBoard(x, y, length){
         const board = document.getElementById("player-board");
         for(let i = 0; i < length; i++){
-
+            
+            
         }
     }
 
