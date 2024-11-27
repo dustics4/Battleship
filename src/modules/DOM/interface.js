@@ -120,7 +120,6 @@ const Interface = (() => {
 
         let ships = document.querySelectorAll('.ship');
         ships.forEach((ship) => {
-            console.log(ship);
             ship.addEventListener("dragstart", (event) => {
                 draggedShip = event.target;
                 console.log(draggedShip);
@@ -148,8 +147,15 @@ const Interface = (() => {
                 const y = parseInt(cell.dataset.y , 10);
 
                 let shipLength = parseInt(draggedShip.dataset.length, 10);
-                placeShipOnBoard(x,y,shipLength, "horizontal");
-                e.target.appendChild(draggedShip);
+                const orientation = "horizontal";
+
+                if(isPlacementValid(x,y, shipLength, orientation)){
+                    placeShipOnBoard(x,y,shipLength, "orientation");
+                    draggedShip.remove();
+                }else{
+                    alert("Invalid ship placement");
+                }
+                
             })
         })
         
@@ -163,8 +169,10 @@ const Interface = (() => {
 
             if(cellX >= 10 || cellY >= 10 || cellX < 0 || cellY < 0) return false;
 
-            cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`)
+            let cell = board.querySelector(`[data-x="${cellX}"][data-y="${cellY}"]`)
+            if(!cell || cell.classList.contains("ship")) return false;
         }
+        return true
     }
     
     function placeShipOnBoard(x, y, length, orientation){
@@ -173,7 +181,7 @@ const Interface = (() => {
             let cellX = orientation === "horizontal" ? x : x + i;
             let cellY = orientation === "horizontal" ? y + i : y;
 
-            let cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`)
+            let cell = board.querySelector(`[data-x="${cellX}"][data-y="${cellY}"]`)
 
             if(cell){
                 cell.classList.add("ship");
