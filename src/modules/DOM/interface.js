@@ -121,6 +121,7 @@ const Interface = (() => {
             console.log(ship);
             ship.addEventListener("dragstart", (event) => {
                 event.target.classList.add("dragging");
+                
             })
             
             ship.addEventListener("dragend", (event) => {
@@ -134,6 +135,14 @@ const Interface = (() => {
             })
             cell.addEventListener("dragover", (event) => {
                 event.preventDefault();
+            })
+
+            cell.addEventListener("drop", (e) => {
+                e.preventDefault();
+                if(e.target.className === "cell"){
+                    console.log(cell.dataset.y);
+                    console.log(cell.dataset.x);
+                }
             })
         })
         
