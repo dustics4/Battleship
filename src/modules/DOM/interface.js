@@ -121,7 +121,8 @@ const Interface = (() => {
             console.log(ship);
             ship.addEventListener("dragstart", (event) => {
                 event.target.classList.add("dragging");
-                
+                ships = event.target;
+                console.log(ships);
             })
             
             ship.addEventListener("dragend", (event) => {
@@ -129,11 +130,10 @@ const Interface = (() => {
             })
         })
 
-        let dragged = null;
 
         cells.forEach((cell) => {
-            cell.addEventListener("dragstart", (event) => {
-                dragged = event.target;
+            cell.addEventListener("dragenter", (event) => {
+                event.preventDefault();
             })
             cell.addEventListener("dragover", (event) => {
                 event.preventDefault();
@@ -142,8 +142,8 @@ const Interface = (() => {
             cell.addEventListener("drop", (e) => {
                 e.preventDefault();
                 if(e.target.className === "cell"){
-                    dragged.parentNode.removeChild(dragged);
-                    e.target.appendChild(dragged);
+                    ships.parentNode.removeChild(ships);
+                    e.target.appendChild(ships);
                     console.log(cell.dataset.y);
                     console.log(cell.dataset.x);
                     const ship = document.getElementById('submarine');
