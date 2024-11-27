@@ -145,10 +145,13 @@ const Interface = (() => {
                 if(!draggedShip) return;
 
                 const x = parseInt(cell.dataset.x , 10);
+                const y = parseInt(cell.dataset.y , 10);
 
+                let shipLength = parseInt(draggedShip.dataset.length, 10);
+
+                
 
                 if(e.target.className === "cell"){
-                    ships.parentNode.removeChild(ships);
                     e.target.appendChild(ships);
                     console.log(cell.dataset.y);
                     console.log(cell.dataset.x);
@@ -158,11 +161,11 @@ const Interface = (() => {
         
     }
     
-    function isPlacementValid(){
+    function isPlacementValid(x, y, shipLength , orientation){
 
     }
     
-    function placeShipOnBoard(){
+    function placeShipOnBoard(x, y, length, orientation){
     
     }
 
