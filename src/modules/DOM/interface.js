@@ -156,14 +156,14 @@ const Interface = (() => {
     }
     
     function isPlacementValid(x, y, shipLength ){
+        
+    }
+    
+    function placeShipOnBoard(x, y, length){
         const board = document.getElementById("player-board");
         for(let i = 0; i < length; i++){
 
         }
-    }
-    
-    function placeShipOnBoard(x, y, length){
-    
     }
 
     function enableOrentationToggle(){
