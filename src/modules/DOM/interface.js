@@ -122,27 +122,31 @@ const Interface = (() => {
         ships.forEach((ship) => {
             console.log(ship);
             ship.addEventListener("dragstart", (event) => {
+                draggedShip = event.target;
+                console.log(draggedShip);
                 event.target.classList.add("dragging");
-                ships = event.target;
-                console.log(ships);
             })
             
             ship.addEventListener("dragend", (event) => {
                 event.target.classList.remove("dragging");
+                draggedShip = null;
             })
         })
 
 
         cells.forEach((cell) => {
-            cell.addEventListener("dragenter", (event) => {
-                event.preventDefault();
-            })
             cell.addEventListener("dragover", (event) => {
                 event.preventDefault();
             })
 
             cell.addEventListener("drop", (e) => {
                 e.preventDefault();
+
+                if(!draggedShip) return;
+
+                const x = parseInt(cell.dataset.x , 10);
+
+
                 if(e.target.className === "cell"){
                     ships.parentNode.removeChild(ships);
                     e.target.appendChild(ships);
