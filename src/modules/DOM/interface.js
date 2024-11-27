@@ -146,9 +146,6 @@ const Interface = (() => {
                     e.target.appendChild(ships);
                     console.log(cell.dataset.y);
                     console.log(cell.dataset.x);
-                    const ship = document.getElementById('submarine');
-                    console.log(ship);
-                    
                 }
             })
         })
