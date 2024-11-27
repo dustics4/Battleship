@@ -149,13 +149,7 @@ const Interface = (() => {
 
                 let shipLength = parseInt(draggedShip.dataset.length, 10);
 
-                
-
-                if(e.target.className === "cell"){
-                    e.target.appendChild(ships);
-                    console.log(cell.dataset.y);
-                    console.log(cell.dataset.x);
-                }
+                e.target.appendChild(draggedShip);
             })
         })
         
