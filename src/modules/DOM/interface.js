@@ -4,6 +4,7 @@ import Ship from "../ship.js";
 
 const Interface = (() => {
     let gameStarted = false;
+    let defaultOrientation = "horizontal";
 
     function createBoardElement(playerType){
         //boardContainer variable / use playertype within this
@@ -22,28 +23,26 @@ const Interface = (() => {
     }
 
     function renderBoard(gameboard, playerType){
-        let cell = document.querySelectorAll(`[data-board="${playerType}"]`);
-        let newBoard = gameboard.board;
-        let datasetX;
-        let datasetY;
-
-        cell.forEach((cell) =>{
-            datasetX =  parseInt(cell.dataset.x);
-            datasetY =  parseInt(cell.dataset.y);
-
-            newBoard[datasetX][datasetY];
-            if(newBoard[datasetX][datasetY] ===  "miss"){
-                cell.innerHTML = "X";
-                cell.classList.add("miss");
-            }else if(newBoard[datasetX][datasetY] ===  "hit"){
-                cell.innerHTML = "X";
-                cell.classList.add("hit");
-            }else if(newBoard[datasetX][datasetY] instanceof Ship){
+        const cells = document.querySelectorAll(`[data-board="${playerType}"]`);
+        const boardState = gameboard.board;
+    
+        cells.forEach((cell) => {
+            const x = parseInt(cell.dataset.x, 10);
+            const y = parseInt(cell.dataset.y, 10);
+    
+            if (boardState[x][y] instanceof Ship) {
                 cell.classList.add("ship");
+            } else if (boardState[x][y] === "miss") {
+                cell.classList.add("miss");
+                cell.innerHTML = "X";
+            } else if (boardState[x][y] === "hit") {
+                cell.classList.add("hit");
+                cell.innerHTML = "X";
+            } else {
+                cell.classList.remove("ship", "miss", "hit");
+                cell.innerHTML = ""; 
             }
-                       
-        })
-      
+        });
     }
 
     function renderShips(){
@@ -112,7 +111,7 @@ const Interface = (() => {
     }
 
     
-    function enableDragAndDrop(){
+    function enableDragAndDrop(gameboard){
         let boardContainer = document.getElementById("player-board");
         let cells  = boardContainer.querySelectorAll('.cell');
 
@@ -149,8 +148,8 @@ const Interface = (() => {
                 let shipLength = parseInt(draggedShip.dataset.length, 10);
                 const orientation = "horizontal";
 
-                if(isPlacementValid(x,y, shipLength, orientation)){
-                    placeShipOnBoard(x,y,shipLength, "orientation");
+                if(isPlacementValid(x,y, shipLength, defaultOrientation)){
+                    placeShipOnBoard(x,y,shipLength, defaultOrientation, gameboard);
                     draggedShip.remove();
                 }else{
                     alert("Invalid ship placement");
@@ -169,31 +168,79 @@ const Interface = (() => {
 
             if(cellX >= 10 || cellY >= 10 || cellX < 0 || cellY < 0) return false;
 
-            let cell = board.querySelector(`[data-x="${cellX}"][data-y="${cellY}"]`)
-            if(!cell || cell.classList.contains("ship")) return false;
+            for (let dx = -1; dx <= 1; dx++) {
+                for (let dy = -1; dy <= 1; dy++) {
+                    let checkX = cellX + dx;
+                    let checkY = cellY + dy;
+                    if (checkX >= 0 && checkX < 10 && checkY >= 0 && checkY < 10) {
+                        let cell = board.querySelector(`[data-x="${checkX}"][data-y="${checkY}"]`);
+                        if (cell && cell.classList.contains("ship")) return false; // Return false if a ship is found
+                    }
+                }
+            }
         }
         return true
     }
+
+    function placeShipOnBoard(x, y, length, orientation = defaultOrientation, gameboard) {
+        const shipCoordinates = [];
+        const ship = new Ship(length);
     
-    function placeShipOnBoard(x, y, length, orientation){
-        const board = document.getElementById("player-board");
-        for(let i = 0; i < length; i++){
-            let cellX = orientation === "horizontal" ? x : x + i;
-            let cellY = orientation === "horizontal" ? y + i : y;
-
-            let cell = board.querySelector(`[data-x="${cellX}"][data-y="${cellY}"]`)
-
-            if(cell){
+        // Log the ship's starting coordinates and orientation
+        console.log(`Placing ship at (${x}, ${y}) with orientation: ${orientation}`);
+    
+        // Add a class based on the orientation for visual representation
+        let shipDiv = document.querySelector(`#${ship.id}`);
+        if (orientation === "horizontal") {
+            shipDiv.classList.add("horizontal");
+            shipDiv.classList.remove("vertical");
+        } else {
+            shipDiv.classList.add("vertical");
+            shipDiv.classList.remove("horizontal");
+        }
+    
+        for (let i = 0; i < length; i++) {
+            let cellX = orientation === "horizontal" ? x + i : x;
+            let cellY = orientation === "horizontal" ? y : y + i;
+    
+            // Log the coordinates for debugging
+            console.log(`Attempting to access cell at (${cellX}, ${cellY})`);
+    
+            // Update the DOM to reflect ship placement
+            const cell = document.querySelector(`[data-x="${cellX}"][data-y="${cellY}"]`);
+    
+            // Check if the cell exists before adding the class
+            if (cell) {
                 cell.classList.add("ship");
+            } else {
+                console.error(`Cell with coordinates (${cellX}, ${cellY}) does not exist!`);
             }
+    
+            // Add the coordinates to the ship's placement
+            shipCoordinates.push([cellX, cellY]);
+        }
+    
+        // Update the gameboard with the placed ship
+        try {
+            gameboard.placeShip(ship, shipCoordinates);
+        } catch (error) {
+            console.error("Error placing ship on the gameboard:", error.message);
         }
     }
+    
 
     function enableOrentationToggle(){
-    
+        const toggleButton = document.createElement("button");
+        toggleButton.textContent = "Toggle Orientation";
+        document.getElementById("controls").appendChild(toggleButton);
+
+        toggleButton.addEventListener("click", () => {
+            defaultOrientation = defaultOrientation === "horizontal" ? "vertical" : "horizontal";
+            toggleButton.textContent = `Orientation: ${defaultOrientation}`;
+        });
     }
 
-    return {createBoardElement, renderBoard, addBoardClickListener, renderShips,enableStartButton, toggleActiveBoard, enableDragAndDrop};
+    return {createBoardElement, renderBoard, addBoardClickListener, renderShips,enableStartButton, toggleActiveBoard, enableDragAndDrop, enableOrentationToggle};
 })();
 
 export default Interface;

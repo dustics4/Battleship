@@ -3,14 +3,17 @@ import Player from "./modules/player.js";
 import Gameboard from "./modules/gameboard.js";
 import Ship from "./modules/ship.js";
 
+const player = new Player(false);
+const computer = new Player(true);
+
 Interface.createBoardElement("player");
 Interface.createBoardElement("computer");
 Interface.renderShips();
 Interface.enableStartButton();
-Interface.enableDragAndDrop();
+Interface.enableDragAndDrop(player.gameboard);
+Interface.enableOrentationToggle();
 
-const player = new Player(false);
-const computer = new Player(true);
+
 
 
 Interface.renderBoard(player.gameboard, "player");
