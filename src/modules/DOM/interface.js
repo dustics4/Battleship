@@ -148,7 +148,7 @@ const Interface = (() => {
                 const y = parseInt(cell.dataset.y , 10);
 
                 let shipLength = parseInt(draggedShip.dataset.length, 10);
-                placeShipOnBoard(x,y,shipLength);
+                placeShipOnBoard(x,y,shipLength, "horizontal");
                 e.target.appendChild(draggedShip);
             })
         })
@@ -159,11 +159,18 @@ const Interface = (() => {
         
     }
     
-    function placeShipOnBoard(x, y, length){
+    function placeShipOnBoard(x, y, length, orientation){
         const board = document.getElementById("player-board");
         for(let i = 0; i < length; i++){
+            let cellX = orientation === "horizontal" ? x : x + i;
+            let cellY = orientation === "horizontal" ? y + i : y;
+
             let cell;
             cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`)
+
+            if(cell){
+                cell.classList.add("ship");
+            }
         }
     }
 
