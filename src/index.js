@@ -42,9 +42,7 @@ function randomlyPlaceShips(gameboard, boardType) {
     // Render the board after placing all ships
     Interface.renderBoard(gameboard, boardType);
 }
-
-randomlyPlaceShips(player.gameboard, "player");
-randomlyPlaceShips(computer.gameboard, "computer");
+randomlyPlaceShips(computer.gameboard, "computer")
 
 Interface.addBoardClickListener((coordinates) => {
     const playerAttackSuccessful = player.attackEnemy(computer.gameboard, coordinates);

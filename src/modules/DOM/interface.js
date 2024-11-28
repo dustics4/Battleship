@@ -228,7 +228,7 @@ const Interface = (() => {
     }
     
 
-    return {createBoardElement, renderBoard, addBoardClickListener, renderShips,enableStartButton, toggleActiveBoard, enableDragAndDrop};
+    return {createBoardElement, renderBoard, addBoardClickListener, renderShips,enableStartButton, toggleActiveBoard, enableDragAndDrop, isPlacementValid,placeShipOnBoard};
 })();
 
 export default Interface;
