@@ -145,6 +145,14 @@ body {
     border-radius: 4px;
 }
 
+.ship.horizontal {
+    transform: rotate(0deg); /* Horizontal is normal */
+}
+
+.ship.vertical {
+    transform: rotate(90deg); /* Vertical ships are rotated 90 degrees */
+}
+
 /* Ship Colors */
 #submarine .ship-cell {
     background-color: #ef5350; /* Soft Red */

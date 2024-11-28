@@ -67,8 +67,25 @@ const Interface = (() => {
                 cell.classList.add('cell', 'ship-cell');
                 shipDiv.appendChild(cell);
             }
+
+            shipDiv.addEventListener('click', () => {
+                const currentOrientation = shipDiv.classList.contains('horizontal') ? 'horizontal' : 'vertical';
+                const newOrientation = currentOrientation === 'horizontal' ? 'vertical' : 'horizontal';
+    
+                const x = parseInt(shipDiv.dataset.x || 0, 10);
+                const y = parseInt(shipDiv.dataset.y || 0, 10);
+    
+                if (isPlacementValid(x, y, shipDiv.dataset.length, newOrientation)) {
+                    shipDiv.classList.remove(currentOrientation);
+                    shipDiv.classList.add(newOrientation);
+                } else {
+                    alert('Invalid orientation change!');
+                }
+            });
+
             playerShipsContainer.appendChild(shipDiv);
         })
+
     }
 
     function enableStartButton() {
@@ -165,16 +182,19 @@ const Interface = (() => {
         for(let i = 0; i < shipLength; i++){
             let cellX = orientation === "horizontal" ? x : x + i;
             let cellY = orientation === "horizontal" ? y + i : y;
-
+    
             if(cellX >= 10 || cellY >= 10 || cellX < 0 || cellY < 0) return false;
-
+    
+            const cell = board.querySelector(`[data-x="${cellX}"][data-y="${cellY}"]`);
+            if (!cell || cell.classList.contains("ship")) return false;
+    
             for (let dx = -1; dx <= 1; dx++) {
                 for (let dy = -1; dy <= 1; dy++) {
                     let checkX = cellX + dx;
                     let checkY = cellY + dy;
                     if (checkX >= 0 && checkX < 10 && checkY >= 0 && checkY < 10) {
-                        let cell = board.querySelector(`[data-x="${checkX}"][data-y="${checkY}"]`);
-                        if (cell && cell.classList.contains("ship")) return false; // Return false if a ship is found
+                        let adjacentCell = board.querySelector(`[data-x="${checkX}"][data-y="${checkY}"]`);
+                        if (adjacentCell && adjacentCell.classList.contains("ship")) return false;
                     }
                 }
             }
@@ -220,7 +240,6 @@ const Interface = (() => {
             shipCoordinates.push([cellX, cellY]);
         }
     
-        // Update the gameboard with the placed ship
         try {
             gameboard.placeShip(ship, shipCoordinates);
         } catch (error) {
