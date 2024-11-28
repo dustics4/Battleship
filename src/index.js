@@ -9,7 +9,7 @@ const computer = new Player(true);
 Interface.createBoardElement("player");
 Interface.createBoardElement("computer");
 Interface.renderShips();
-Interface.enableStartButton();
+Interface.enableStartButton(player);
 Interface.enableDragAndDrop(player.gameboard);
 
 Interface.renderBoard(player.gameboard, "player");
@@ -32,8 +32,8 @@ function randomlyPlaceShips(gameboard, boardType) {
             const y = Math.floor(Math.random() * 10); 
             const orientation = Math.random() > 0.5 ? "horizontal" : "vertical"; 
 
-            if (Interface.isPlacementValid(x, y, shipData.length, orientation)) {
-                Interface.placeShipOnBoard(x, y, shipData.length, orientation, gameboard);
+            if (Interface.isPlacementValid(x, y, shipData.length, orientation, boardType)) {
+                Interface.placeShipOnBoard(x, y, shipData.length, orientation, gameboard, boardType);
                 placed = true; 
             }
         }
@@ -42,7 +42,21 @@ function randomlyPlaceShips(gameboard, boardType) {
     // Render the board after placing all ships
     Interface.renderBoard(gameboard, boardType);
 }
+
 randomlyPlaceShips(computer.gameboard, "computer")
+let gameStarted;
+function checkGameOver() {
+    if (computer.gameboard.allShipsSunk()) {
+        alert("You win! All computer ships are sunk.");
+        gameStarted = false;
+        return true; // Game over
+    } else if (player.gameboard.allShipsSunk()) {
+        alert("Game Over! The computer wins.");
+        gameStarted = false;
+        return true; // Game over
+    }
+    return false;
+}
 
 Interface.addBoardClickListener((coordinates) => {
     const playerAttackSuccessful = player.attackEnemy(computer.gameboard, coordinates);
