@@ -12,11 +12,16 @@ Interface.renderShips();
 Interface.enableStartButton();
 Interface.enableDragAndDrop(player.gameboard);
 
-
-
-
 Interface.renderBoard(player.gameboard, "player");
 Interface.renderBoard(computer.gameboard, "computer");
+
+const shipsToPlace = [
+    { id: "submarine", length: 1 },
+    { id: "patrolBoat", length: 2 },
+    { id: "destroyer", length: 3 },
+    { id: "battleship", length: 4 },
+    { id: "carrier", length: 5 },
+];
 
 Interface.addBoardClickListener((coordinates) => {
     const playerAttackSuccessful = player.attackEnemy(computer.gameboard, coordinates);
