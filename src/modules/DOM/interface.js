@@ -75,12 +75,9 @@ const Interface = (() => {
                 const x = parseInt(shipDiv.dataset.x || 0, 10);
                 const y = parseInt(shipDiv.dataset.y || 0, 10);
     
-                if (isPlacementValid(x, y, shipDiv.dataset.length, newOrientation)) {
-                    shipDiv.classList.remove(currentOrientation);
-                    shipDiv.classList.add(newOrientation);
-                } else {
-                    alert('Invalid orientation change!');
-                }
+                shipDiv.classList.remove(currentOrientation);
+                shipDiv.classList.add(newOrientation);
+                defaultOrientation = newOrientation;
             });
 
             playerShipsContainer.appendChild(shipDiv);
@@ -163,7 +160,6 @@ const Interface = (() => {
                 const y = parseInt(cell.dataset.y , 10);
 
                 let shipLength = parseInt(draggedShip.dataset.length, 10);
-                const orientation = "horizontal";
 
                 if(isPlacementValid(x,y, shipLength, defaultOrientation)){
                     placeShipOnBoard(x,y,shipLength, defaultOrientation, gameboard);
@@ -206,37 +202,21 @@ const Interface = (() => {
         const shipCoordinates = [];
         const ship = new Ship(length);
     
-        // Log the ship's starting coordinates and orientation
-        console.log(`Placing ship at (${x}, ${y}) with orientation: ${orientation}`);
-    
-        // Add a class based on the orientation for visual representation
-        let shipDiv = document.querySelector(`#${ship.id}`);
-        if (orientation === "horizontal") {
-            shipDiv.classList.add("horizontal");
-            shipDiv.classList.remove("vertical");
-        } else {
-            shipDiv.classList.add("vertical");
-            shipDiv.classList.remove("horizontal");
-        }
+        const boardContainer = document.getElementById("player-board");
     
         for (let i = 0; i < length; i++) {
-            let cellX = orientation === "horizontal" ? x + i : x;
-            let cellY = orientation === "horizontal" ? y : y + i;
+            let cellX = orientation === "horizontal" ? x : x + i;
+            let cellY = orientation === "horizontal" ? y + i : y;
     
-            // Log the coordinates for debugging
-            console.log(`Attempting to access cell at (${cellX}, ${cellY})`);
+            const cell = boardContainer.querySelector(`[data-x="${cellX}"][data-y="${cellY}"]`);
     
-            // Update the DOM to reflect ship placement
-            const cell = document.querySelector(`[data-x="${cellX}"][data-y="${cellY}"]`);
-    
-            // Check if the cell exists before adding the class
             if (cell) {
                 cell.classList.add("ship");
             } else {
                 console.error(`Cell with coordinates (${cellX}, ${cellY}) does not exist!`);
+                return;
             }
     
-            // Add the coordinates to the ship's placement
             shipCoordinates.push([cellX, cellY]);
         }
     
@@ -246,6 +226,7 @@ const Interface = (() => {
             console.error("Error placing ship on the gameboard:", error.message);
         }
     }
+    
     
 
     function enableOrentationToggle(){

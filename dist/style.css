@@ -146,11 +146,11 @@ body {
 }
 
 .ship.horizontal {
-    transform: rotate(0deg); /* Horizontal is normal */
+    transform: rotate(0deg);
 }
 
 .ship.vertical {
-    transform: rotate(90deg); /* Vertical ships are rotated 90 degrees */
+    transform: rotate(90deg);
 }
 
 /* Ship Colors */
