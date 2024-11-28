@@ -11,7 +11,6 @@ Interface.createBoardElement("computer");
 Interface.renderShips();
 Interface.enableStartButton();
 Interface.enableDragAndDrop(player.gameboard);
-Interface.enableOrentationToggle();
 
 
 

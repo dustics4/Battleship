@@ -227,20 +227,8 @@ const Interface = (() => {
         }
     }
     
-    
 
-    function enableOrentationToggle(){
-        const toggleButton = document.createElement("button");
-        toggleButton.textContent = "Toggle Orientation";
-        document.getElementById("controls").appendChild(toggleButton);
-
-        toggleButton.addEventListener("click", () => {
-            defaultOrientation = defaultOrientation === "horizontal" ? "vertical" : "horizontal";
-            toggleButton.textContent = `Orientation: ${defaultOrientation}`;
-        });
-    }
-
-    return {createBoardElement, renderBoard, addBoardClickListener, renderShips,enableStartButton, toggleActiveBoard, enableDragAndDrop, enableOrentationToggle};
+    return {createBoardElement, renderBoard, addBoardClickListener, renderShips,enableStartButton, toggleActiveBoard, enableDragAndDrop};
 })();
 
 export default Interface;
