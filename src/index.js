@@ -43,6 +43,9 @@ function randomlyPlaceShips(gameboard, boardType) {
     Interface.renderBoard(gameboard, boardType);
 }
 
+randomlyPlaceShips(player.gameboard, "player");
+randomlyPlaceShips(computer.gameboard, "computer");
+
 Interface.addBoardClickListener((coordinates) => {
     const playerAttackSuccessful = player.attackEnemy(computer.gameboard, coordinates);
     console.log("Player attacked at:", coordinates)
