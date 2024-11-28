@@ -23,6 +23,28 @@ const shipsToPlace = [
     { id: "carrier", length: 5 },
 ];
 
+function randomlyPlaceShips(gameboard, boardType) {
+    shipsToPlace.forEach((shipData) => {
+        let placed = false;
+
+        while (!placed) {
+            const x = Math.floor(Math.random() * 10); // Random X coordinate
+            const y = Math.floor(Math.random() * 10); // Random Y coordinate
+            const orientation = Math.random() > 0.5 ? "horizontal" : "vertical"; // Random orientation
+
+            // Validate placement
+            if (Interface.isPlacementValid(x, y, shipData.length, orientation)) {
+                // Place ship
+                Interface.placeShipOnBoard(x, y, shipData.length, orientation, gameboard);
+                placed = true; // Exit the loop once placed
+            }
+        }
+    });
+
+    // Render the board after placing all ships
+    Interface.renderBoard(gameboard, boardType);
+}
+
 Interface.addBoardClickListener((coordinates) => {
     const playerAttackSuccessful = player.attackEnemy(computer.gameboard, coordinates);
     console.log("Player attacked at:", coordinates)
